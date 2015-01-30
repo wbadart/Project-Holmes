@@ -37,7 +37,7 @@ if isa(realpass, 'double');
     % Password is a word
     
 elseif isa(realpass, 'char');
-    alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[{]}\|";:/?.>,<';
     alphasize = size(alphabet);
     guess = ' ';
     counter = 0;
@@ -46,23 +46,97 @@ elseif isa(realpass, 'char');
     
     while strcmp(guess, realpass) == 0
         
-        i = i + 1;
-        for j = 1:8
-            for n = 1:alphasize(2)
-                guess(j) = alphabet(n);
-                if strcmp(guess, realpass) == 1
-                    break;
-                end
-            end
-            
+        
+        for i = 1:alphasize(2)
+            guess(1) = alphabet(i);
+            counter = counter + 1;
             if strcmp(guess, realpass) == 1
-                    break;
+                break
             end
         end
         
+        if strcmp(guess, realpass) == 0
+            for i = 1:alphasize(2)
+                counter = counter + 1;
+                guess(1) = alphabet(i);
+                for j = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(2) = alphabet(j);
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end
+                end
+                if strcmp(guess, realpass) == 1
+                    break
+                end
+            end
+        end
         
+        if strcmp(guess, realpass) == 0
+            for i = 1:alphasize(2)
+                counter = counter + 1;
+                guess(1) = alphabet(i);
+                for j = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(2) = alphabet(j);
+                    for k = 1:alphasize(2)
+                        counter = counter + 1;
+                        guess(3) = alphabet(k);
+                        if strcmp(guess, realpass) == 1
+                            break
+                        end
+                    end
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end
+                end
+                if strcmp(guess, realpass) == 1
+                    break
+                end
+            end
+        end
         
-        
+        if strcmp(guess, realpass) == 0
+            for i = 1:alphasize(2)
+                counter = counter + 1;
+                guess(1) = alphabet(i);
+                for j = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(2) = alphabet(j);
+                    for k = 1:alphasize(2)
+                        counter = counter + 1;
+                        guess(3) = alphabet(k);
+                        for l = 1:alphasize(2)
+                            counter = counter + 1;
+                            guess(4) = alphabet(l);
+                            if strcmp(guess, realpass) == 1
+                                break
+                            end
+                        end
+                        if strcmp(guess, realpass) == 1
+                            break
+                        end
+                    end
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end
+                end
+                if strcmp(guess, realpass) == 1
+                    break
+                end
+            end
+        end
+
+%         i = i + 1;
+%         for k = 1:i;
+%             for j = 1:alphasize(2)
+%                 guess(i) = alphabet(j);
+%                 if strcmp(guess, realpass) == 1
+%                     break;
+%                 end
+%             end
+%         end
+  
         
 %         for n = 1:8
 %             for i = 1:alphasize(2)
@@ -94,12 +168,12 @@ elseif isa(realpass, 'char');
 %                         break;
 %                     end
 %                 end
-%             end
-            
-        %end
+%             end            
+%        end
+
     end
     
     disp(['Got it.  The password is ', guess]);
-    %disp(['It took ', num2str(i + j + k), ' guesses.']);
+    disp(['It took ', num2str(counter), ' guesses.']);
     
 end
