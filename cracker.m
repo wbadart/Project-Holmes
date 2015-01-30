@@ -7,9 +7,9 @@
 % length or complexity, or having the program generate a password.
 
 % Authors: Happy Hale
-%          Tucker (?)
+%          Tucker Killian
 %          Grace Bushong
-%          Rachael (?)
+%          Rachael Mullin
 %          Will Badart
 
 % See git for version control.
