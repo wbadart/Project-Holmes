@@ -21,6 +21,8 @@ realpass = input('What is the password: ', 's');
 
 %% Password is a number
 
+
+
 if isa(realpass, 'double');
     guess = 0;
     counter = 0;
@@ -37,7 +39,7 @@ if isa(realpass, 'double');
     % Password is a word
     
 elseif isa(realpass, 'char');
-    alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[{]}\|";:/?.>,<';
+    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
     alphasize = size(alphabet);
     guess = ' ';
     counter = 0;
