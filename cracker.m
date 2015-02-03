@@ -129,50 +129,6 @@ elseif isa(realpass, 'char');
             end
         end
 
-%         i = i + 1;
-%         for k = 1:i;
-%             for j = 1:alphasize(2)
-%                 guess(i) = alphabet(j);
-%                 if strcmp(guess, realpass) == 1
-%                     break;
-%                 end
-%             end
-%         end
-  
-        
-%         for n = 1:8
-%             for i = 1:alphasize(2)
-%                 guess(n) = alphabet(i);
-%                 if strcmp(guess, realpass) == 1
-%                     break;
-%                 end
-%             end
-%             if strcmp(guess, realpass) == 1
-%                 break;
-%             end
-%         end
-        
-        
-%         i = i + 1;
-%         
-%         %if i <= alphasize(2)
-%         %    guess(1) = alphabet(i);
-%         %    
-%         %else
-%             
-%             while strcmp(guess, realpass) == 0
-%                 j = j +1;
-%                 guess(1) = alphabet(j);
-%                 
-%                 for k = 1:alphasize(2);
-%                     guess(2) = alphabet(k);
-%                     if strcmp(guess, realpass) == 1
-%                         break;
-%                     end
-%                 end
-%             end            
-%        end
-
     end
     
     disp(['Got it.  The password is ', guess]);
