@@ -19,7 +19,7 @@ clc;
 
 realpass = input('What is the password: ', 's');
 
-%% Import Common Password Library
+%% Import Password Library
 
 filename = 'commonPass.txt';
 delimiter = '';
@@ -32,121 +32,100 @@ clearvars filename delimiter formatSpec fileID dataArray ans;
 
 %% Set Parameters
 
-alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
-alphasize = size(alphabet);
+alphabet = 'abcd';
+%efghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²
+alphasizeA = size(alphabet);
+alphasize = alphasizeA(2);
+
 guess = ' ';
 counter = 0;
-i = 0;
-j = 0;
+%i = 0;
+%j = 0;
 
 %% Crack Password
 
-while strcmp(guess, realpass) == 0
-
-    % checks password against the library
-    for i = 1:size(password)
-        counter = counter + 1;
-        guess = password(i);
-        if strcmp(guess, realpass) == 1
-            guess = guess{:};
-            break
-        end
-    end
-
+% checks password against the library
+for i = 1:size(password)
+    counter = counter + 1;
+    guess = password(i);
     if strcmp(guess, realpass) == 1
+        guess = guess{:};
         break
     end
+end
 
+% if password isn't found in library:
+if strcmp(guess, realpass) == 0
+    passLength = 1;
+    passSlotA = (1:passLength);
+    passSlot = passSlotA(end:-1:1);
+    icount = 0;
     guess = ' '; % reset 'guess.'  It wasn't a common password
-    
-    % check all 1 character passwords possible w/ given alphabet
-    if strcmp(guess, realpass) == 0
-        for i = 1:alphasize(2)
-            guess(1) = alphabet(i);
-            counter = counter + 1;
-            if strcmp(guess, realpass) == 1
-                break
-            end
+    guess(1:passLength) = 'a';
+    while strcmp(guess, realpass) == 0
+        icount = icount + 1;
+        if guess(1:end) == alphabet(end)
+            guess(1:end) = 'a';
+            passLength = passLength + 1;
+            passSlotA = (i:passLength);
+            passSlot = passSlotA(end:-1:1);
         end
-    end
-    
-    % the password has more than one characters.  Check all possible 2
-    % character passwords
-    if strcmp(guess, realpass) == 0
-        for i = 1:alphasize(2)
-            counter = counter + 1;
-            guess(1) = alphabet(i);
-            for j = 1:alphasize(2)
-                counter = counter + 1;
-                guess(2) = alphabet(j);
+        
+        for i = 1:passLength
+            for j = 1:alphasize
+                
+                guess(passSlot(i)) = alphabet(j);
+                
+                
+                
                 if strcmp(guess, realpass) == 1
-                    break
+                    break;
                 end
+                
+                
+                
             end
+            
             if strcmp(guess, realpass) == 1
-                break
+                break;
             end
+            
+            
+            
         end
-    end
-    
-    % 3 character passwords
-    if strcmp(guess, realpass) == 0
-        for i = 1:alphasize(2)
-            counter = counter + 1;
-            guess(1) = alphabet(i);
-            for j = 1:alphasize(2)
-                counter = counter + 1;
-                guess(2) = alphabet(j);
-                for k = 1:alphasize(2)
-                    counter = counter + 1;
-                    guess(3) = alphabet(k);
-                    if strcmp(guess, realpass) == 1
-                        break
-                    end
-                end
-                if strcmp(guess, realpass) == 1
-                    break
-                end
-            end
-            if strcmp(guess, realpass) == 1
-                break
-            end
-        end
-    end
-    
-    % 4 character passwords
-    if strcmp(guess, realpass) == 0
-        for i = 1:alphasize(2)
-            counter = counter + 1;
-            guess(1) = alphabet(i);
-            for j = 1:alphasize(2)
-                counter = counter + 1;
-                guess(2) = alphabet(j);
-                for k = 1:alphasize(2)
-                    counter = counter + 1;
-                    guess(3) = alphabet(k);
-                    for l = 1:alphasize(2)
-                        counter = counter + 1;
-                        guess(4) = alphabet(l);
-                        if strcmp(guess, realpass) == 1
-                            break
-                        end %ends if
-                    end %ends for(l)
-                    if strcmp(guess, realpass) == 1
-                        break
-                    end %ends if
-                end %ends for(k)
-                if strcmp(guess, realpass) == 1
-                    break
-                end %ends if
-            end %ends for(j)
-            if strcmp(guess, realpass) == 1
-                break
-            end %ends if
-        end %ends for(i)
-    end %ends if strcmp(guess, ...
+        
+        
+        
+        
+%         if b > alphasize
+%             passLength = passLength + 1;
+%             passSlotA = (1:passLength);
+%             passSlot = passSlotA(end:-1:1);
+%             b = 1;
+%             guess = ' ';
+%             guess(1:passLength) = 'a';
+%             
+%         end
+%         
+%         for i = 1:passLength
+%             
+%             for j = 1:alphasize
+%                 guess(passSlot(i)) = alphabet(j);
+%                 b = b + 1;
+%                 if strcmp(guess, realpass) == 1
+%                     break
+%                 end
+%                 
+%                 
+%             end
+%             
+%         break  
+%         end
+%         i = i + 1;
 
-end %ends while
+    counter = counter + 1;   
+    end %ends while, checks guess 
+end %ends if strcmp(... if match
 
 %% Display Results
 
