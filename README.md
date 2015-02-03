@@ -8,4 +8,4 @@ Collaborators:
 - Tucker Killian<br />
 - Grace Bushong<br />
 - Will Badart
-Hi guys!!
+- Hi guys!!
