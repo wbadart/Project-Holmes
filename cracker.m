@@ -70,14 +70,11 @@ if strcmp(guess, realpass) == 0
             passSlotA = (1:passLength);
             passSlot = passSlotA(end:-1:1);
         end
-        if strcmp(guess, realpass) == 0
-            
-            guess = guessfunc(alphabet, passLength, passSlot, realpass, guess);
-            
-        end
         
-
-    counter = counter + 1;   
+        guess = guessfunc(alphabet, passLength, passSlot, realpass, guess);
+        
+        counter = counter + 1;
+    
     end %ends while, checks guess 
 end %ends if strcmp(... if match
 
