@@ -32,8 +32,8 @@ clearvars filename delimiter formatSpec fileID dataArray ans;
 
 %% Set Parameters
 
-alphabet = 'abcd';
-%efghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²
+alphabet = 'abc';
+%defghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²
 alphasizeA = size(alphabet);
 alphasize = alphasizeA(2);
 
@@ -45,6 +45,7 @@ counter = 0;
 %% Crack Password
 
 % checks password against the library
+if counter < 0
 for i = 1:size(password)
     counter = counter + 1;
     guess = password(i);
@@ -53,7 +54,8 @@ for i = 1:size(password)
         break
     end
 end
-
+end
+counter = counter + 1;
 % if password isn't found in library:
 if strcmp(guess, realpass) == 0
     passLength = 1;
@@ -61,67 +63,19 @@ if strcmp(guess, realpass) == 0
     passSlot = passSlotA(end:-1:1);
     icount = 0;
     guess = ' '; % reset 'guess.'  It wasn't a common password
-    guess(1:passLength) = 'a';
+    
     while strcmp(guess, realpass) == 0
-        icount = icount + 1;
         if guess(1:end) == alphabet(end)
-            guess(1:end) = 'a';
             passLength = passLength + 1;
-            passSlotA = (i:passLength);
+            passSlotA = (1:passLength);
             passSlot = passSlotA(end:-1:1);
         end
-        
-        for i = 1:passLength
-            for j = 1:alphasize
-                
-                guess(passSlot(i)) = alphabet(j);
-                
-                
-                
-                if strcmp(guess, realpass) == 1
-                    break;
-                end
-                
-                
-                
-            end
+        if strcmp(guess, realpass) == 0
             
-            if strcmp(guess, realpass) == 1
-                break;
-            end
-            
-            
+            guess = guessfunc(alphabet, passLength, passSlot, realpass, guess);
             
         end
         
-        
-        
-        
-%         if b > alphasize
-%             passLength = passLength + 1;
-%             passSlotA = (1:passLength);
-%             passSlot = passSlotA(end:-1:1);
-%             b = 1;
-%             guess = ' ';
-%             guess(1:passLength) = 'a';
-%             
-%         end
-%         
-%         for i = 1:passLength
-%             
-%             for j = 1:alphasize
-%                 guess(passSlot(i)) = alphabet(j);
-%                 b = b + 1;
-%                 if strcmp(guess, realpass) == 1
-%                     break
-%                 end
-%                 
-%                 
-%             end
-%             
-%         break  
-%         end
-%         i = i + 1;
 
     counter = counter + 1;   
     end %ends while, checks guess 
