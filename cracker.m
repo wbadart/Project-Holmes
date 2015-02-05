@@ -17,6 +17,7 @@
 clear;
 clc;
 
+GUI_OpeningFcn;
 realpass = input('What is the password: ', 's');
 
 %% Import Password Library
