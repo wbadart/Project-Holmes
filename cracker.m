@@ -145,7 +145,47 @@ while strcmp(guess, realpass) == 0
             end %ends if
         end %ends for(i)
     end %ends if strcmp(guess, ...
-
+    
+    % 5 character passwords
+    if strcmp(guess, realpass) == 0
+        for i = 1:alphasize(2)
+            counter = counter + 1;
+            guess(1) = alphabet(i);
+            for j = 1:alphasize(2)
+                counter = counter + 1;
+                guess(2) = alphabet(j);
+                for k = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(3) = alphabet(k);
+                    for l = 1:alphasize(2)
+                        counter = counter + 1;
+                        guess(4) = alphabet(l);
+                        for m = 1:alphasize(2);
+                            counter = counter + 1;
+                            guess(5) = alphabet(m);
+                            if strcmp(guess, realpass) == 1
+                                break
+                            end %ends if
+                        end %ends for(m)
+                        if strcmp(guess, realpass) == 1
+                            break
+                        end %ends if
+                    end %ends for(l)
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end %ends if
+                end %ends for(k)
+                if strcmp(guess, realpass) == 1
+                    break
+                end %ends if
+            end %ends for(j)
+            if strcmp(guess, realpass) == 1
+                break
+            end %ends if
+        end %ends for(i)
+    end %ends if strcmp(guess, ...
+    
+    
 end %ends while
 
 %% Display Results
