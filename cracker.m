@@ -76,7 +76,7 @@ while strcmp(guess, realpass) == 0
     % character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
                 counter = counter + 1;
@@ -94,10 +94,10 @@ while strcmp(guess, realpass) == 0
     % 3 character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
-                counter = counter + 1;
+                %counter = counter + 1;
                 guess(2) = alphabet(j);
                 for k = 1:alphasize(2)
                     counter = counter + 1;
@@ -119,13 +119,13 @@ while strcmp(guess, realpass) == 0
     % 4 character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
-                counter = counter + 1;
+                %counter = counter + 1;
                 guess(2) = alphabet(j);
                 for k = 1:alphasize(2)
-                    counter = counter + 1;
+                    %counter = counter + 1;
                     guess(3) = alphabet(k);
                     for l = 1:alphasize(2)
                         counter = counter + 1;
@@ -151,16 +151,16 @@ while strcmp(guess, realpass) == 0
     % 5 character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
-                counter = counter + 1;
+                %counter = counter + 1;
                 guess(2) = alphabet(j);
                 for k = 1:alphasize(2)
-                    counter = counter + 1;
+                    %counter = counter + 1;
                     guess(3) = alphabet(k);
                     for l = 1:alphasize(2)
-                        counter = counter + 1;
+                        %counter = counter + 1;
                         guess(4) = alphabet(l);
                         for m = 1:alphasize(2);
                             counter = counter + 1;
@@ -190,19 +190,19 @@ while strcmp(guess, realpass) == 0
     % 6 character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
-                counter = counter + 1;
+                %counter = counter + 1;
                 guess(2) = alphabet(j);
                 for k = 1:alphasize(2)
-                    counter = counter + 1;
+                    %counter = counter + 1;
                     guess(3) = alphabet(k);
                     for l = 1:alphasize(2)
-                        counter = counter + 1;
+                        %counter = counter + 1;
                         guess(4) = alphabet(l);
                         for m = 1:alphasize(2);
-                            counter = counter + 1;
+                            %counter = counter + 1;
                             guess(5) = alphabet(m);
                             for n = 1:alphasize(2)
                                 counter = counter + 1;
@@ -236,22 +236,22 @@ while strcmp(guess, realpass) == 0
     % 7 character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
-                counter = counter + 1;
+                %counter = counter + 1;
                 guess(2) = alphabet(j);
                 for k = 1:alphasize(2)
-                    counter = counter + 1;
+                    %counter = counter + 1;
                     guess(3) = alphabet(k);
                     for l = 1:alphasize(2)
-                        counter = counter + 1;
+                        %counter = counter + 1;
                         guess(4) = alphabet(l);
                         for m = 1:alphasize(2);
-                            counter = counter + 1;
+                            %counter = counter + 1;
                             guess(5) = alphabet(m);
                             for n = 1:alphasize(2)
-                                counter = counter + 1;
+                                %counter = counter + 1;
                                 guess(6) = alphabet(n);
                                 for o = 1:alphasize(2);
                                     counter = counter + 1;
@@ -289,25 +289,25 @@ while strcmp(guess, realpass) == 0
     % 8 character passwords
     if strcmp(guess, realpass) == 0
         for i = 1:alphasize(2)
-            counter = counter + 1;
+            %counter = counter + 1;
             guess(1) = alphabet(i);
             for j = 1:alphasize(2)
-                counter = counter + 1;
+                %counter = counter + 1;
                 guess(2) = alphabet(j);
                 for k = 1:alphasize(2)
-                    counter = counter + 1;
+                    %counter = counter + 1;
                     guess(3) = alphabet(k);
                     for l = 1:alphasize(2)
-                        counter = counter + 1;
+                        %counter = counter + 1;
                         guess(4) = alphabet(l);
                         for m = 1:alphasize(2);
-                            counter = counter + 1;
+                            %counter = counter + 1;
                             guess(5) = alphabet(m);
                             for n = 1:alphasize(2)
-                                counter = counter + 1;
+                                %counter = counter + 1;
                                 guess(6) = alphabet(n);
                                 for o = 1:alphasize(2);
-                                    counter = counter + 1;
+                                    %counter = counter + 1;
                                     guess(7) = alphabet(o);
                                     for p = 1:alphasize(2)
                                         counter = counter + 1;
