@@ -185,6 +185,165 @@ while strcmp(guess, realpass) == 0
         end %ends for(i)
     end %ends if strcmp(guess, ...
     
+    % 6 character passwords
+    if strcmp(guess, realpass) == 0
+        for i = 1:alphasize(2)
+            counter = counter + 1;
+            guess(1) = alphabet(i);
+            for j = 1:alphasize(2)
+                counter = counter + 1;
+                guess(2) = alphabet(j);
+                for k = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(3) = alphabet(k);
+                    for l = 1:alphasize(2)
+                        counter = counter + 1;
+                        guess(4) = alphabet(l);
+                        for m = 1:alphasize(2);
+                            counter = counter + 1;
+                            guess(5) = alphabet(m);
+                            for n = 1:alphasize(2)
+                                counter = counter + 1;
+                                guess(6) = alphabet(n);
+                                if strcmp(guess, realpass) == 1
+                                    break
+                                end %ends if
+                            end %ends for(n)
+                            if strcmp(guess, realpass) == 1
+                                break
+                            end %ends if
+                        end %ends for(m)
+                        if strcmp(guess, realpass) == 1
+                            break
+                        end %ends if
+                    end %ends for(l)
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end %ends if
+                end %ends for(k)
+                if strcmp(guess, realpass) == 1
+                    break
+                end %ends if
+            end %ends for(j)
+            if strcmp(guess, realpass) == 1
+                break
+            end %ends if
+        end %ends for(i)
+    end %ends if strcmp(guess, ...
+    
+    % 7 character passwords
+    if strcmp(guess, realpass) == 0
+        for i = 1:alphasize(2)
+            counter = counter + 1;
+            guess(1) = alphabet(i);
+            for j = 1:alphasize(2)
+                counter = counter + 1;
+                guess(2) = alphabet(j);
+                for k = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(3) = alphabet(k);
+                    for l = 1:alphasize(2)
+                        counter = counter + 1;
+                        guess(4) = alphabet(l);
+                        for m = 1:alphasize(2);
+                            counter = counter + 1;
+                            guess(5) = alphabet(m);
+                            for n = 1:alphasize(2)
+                                counter = counter + 1;
+                                guess(6) = alphabet(n);
+                                for o = 1:alphasize(2);
+                                    counter = counter + 1;
+                                    guess(7) = alphabet(o);
+                                    if strcmp(guess, realpass) == 1
+                                        break
+                                    end %ends if
+                                end %ends for(o)
+                                if strcmp(guess, realpass) == 1
+                                    break
+                                end %ends if
+                            end %ends for(n)
+                            if strcmp(guess, realpass) == 1
+                                break
+                            end %ends if
+                        end %ends for(m)
+                        if strcmp(guess, realpass) == 1
+                            break
+                        end %ends if
+                    end %ends for(l)
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end %ends if
+                end %ends for(k)
+                if strcmp(guess, realpass) == 1
+                    break
+                end %ends if
+            end %ends for(j)
+            if strcmp(guess, realpass) == 1
+                break
+            end %ends if
+        end %ends for(i)
+    end %ends if strcmp(guess, ...
+    
+    % 8 character passwords
+    if strcmp(guess, realpass) == 0
+        for i = 1:alphasize(2)
+            counter = counter + 1;
+            guess(1) = alphabet(i);
+            for j = 1:alphasize(2)
+                counter = counter + 1;
+                guess(2) = alphabet(j);
+                for k = 1:alphasize(2)
+                    counter = counter + 1;
+                    guess(3) = alphabet(k);
+                    for l = 1:alphasize(2)
+                        counter = counter + 1;
+                        guess(4) = alphabet(l);
+                        for m = 1:alphasize(2);
+                            counter = counter + 1;
+                            guess(5) = alphabet(m);
+                            for n = 1:alphasize(2)
+                                counter = counter + 1;
+                                guess(6) = alphabet(n);
+                                for o = 1:alphasize(2);
+                                    counter = counter + 1;
+                                    guess(7) = alphabet(o);
+                                    for p = 1:alphasize(2)
+                                        counter = counter + 1;
+                                        guess(8) = alphabet(p);
+                                        if strcmp(guess, realpass) == 1
+                                            break
+                                        end %ends if
+                                    end % ends for(p)
+                                    if strcmp(guess, realpass) == 1
+                                        break
+                                    end %ends if
+                                end %ends for(o)
+                                if strcmp(guess, realpass) == 1
+                                    break
+                                end %ends if
+                            end %ends for(n)
+                            if strcmp(guess, realpass) == 1
+                                break
+                            end %ends if
+                        end %ends for(m)
+                        if strcmp(guess, realpass) == 1
+                            break
+                        end %ends if
+                    end %ends for(l)
+                    if strcmp(guess, realpass) == 1
+                        break
+                    end %ends if
+                end %ends for(k)
+                if strcmp(guess, realpass) == 1
+                    break
+                end %ends if
+            end %ends for(j)
+            if strcmp(guess, realpass) == 1
+                break
+            end %ends if
+        end %ends for(i)
+    end %ends if strcmp(guess, ...
+    
     
 end %ends while
 
