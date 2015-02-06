@@ -19,6 +19,8 @@ clc;
 
 realpass = input('What is the password: ', 's');
 
+tic;
+
 %% Import Common Password Library
 
 filename = 'commonPass.txt';
@@ -355,3 +357,6 @@ if counter == 1
 else
     disp(['It took ', num2str(counter), ' guesses.']);
 end
+
+toc;
+
