@@ -17,7 +17,7 @@
 clear;
 clc;
 
-GUI_OpeningFcn;
+%GUI_OpeningFcn;
 realpass = input('What is the password: ', 's');
 
 %% Import Password Library
@@ -62,7 +62,7 @@ if strcmp(guess, realpass) == 0
     passLength = 1;
     passSlotA = (1:passLength);
     passSlot = passSlotA(end:-1:1);
-    icount = 0;
+    icount = 1;
     guess = ' '; % reset 'guess.'  It wasn't a common password
     
     while strcmp(guess, realpass) == 0
@@ -70,10 +70,11 @@ if strcmp(guess, realpass) == 0
             passLength = passLength + 1;
             passSlotA = (1:passLength);
             passSlot = passSlotA(end:-1:1);
+            icount = 1;
         end
         
-        guess = guessfunc(alphabet, passLength, passSlot, realpass, guess);
-        
+        guess = guessfunc(alphabet, passLength, passSlot, realpass, guess, icount);
+        icount = icount + 1;
         counter = counter + 1;
     
     end %ends while, checks guess 
