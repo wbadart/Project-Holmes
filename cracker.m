@@ -60,24 +60,30 @@ counter = counter + 1;
 % if password isn't found in library:
 if strcmp(guess, realpass) == 0
     passLength = 1;
-    passSlotA = (1:passLength);
-    passSlot = passSlotA(end:-1:1);
-    icount = 1;
     guess = ' '; % reset 'guess.'  It wasn't a common password
     
     while strcmp(guess, realpass) == 0
         if guess(1:end) == alphabet(end)
             passLength = passLength + 1;
-            passSlotA = (1:passLength);
-            passSlot = passSlotA(end:-1:1);
-            icount = 1;
         end
         
-        guess = guessfunc(alphabet, passLength, passSlot, realpass, guess, icount);
-        icount = icount + 1;
+        x = 2;
+        n = ones(1, passLength);
+        n(1) = passLength;
+        while n > 0
+            n(x) = n(x - 1) - 1;
+            x = x + 1;
+        end
+        n = n(1:end-1);
+        %now you have [n] i.e. [4, 3, 2, 1]
+        
+        
+        guess(n) = guessfunc(alphabet, passLength, guess, n, i);
         counter = counter + 1;
+        i = i + 1;
+        
+    end %ends while, checks guess
     
-    end %ends while, checks guess 
 end %ends if strcmp(... if match
 
 %% Display Results
