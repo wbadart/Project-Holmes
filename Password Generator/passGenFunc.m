@@ -10,13 +10,12 @@ function [] = passGenFunc(handles, genbool)
 
 complexity = handles.complexSlide.Value;
 chars.lowers = 'abcdefghijklmnopqrstuvwxyz';
-chars.uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+chars.uppers = upper(chars.lowers);
 chars.nums = '1234567890';
 chars.spec = '!@#$%^&*()-_=+[{]}\|;:''",<.>/?';
 passLength = str2double(handles.passLen.String);
 
 %% Determine Complexity Level
-
 
 if (complexity <= 0.25)
     level = 1;
