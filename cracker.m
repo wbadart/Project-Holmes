@@ -17,8 +17,8 @@
 clear;
 clc;
 
-%GUI_OpeningFcn;
 realpass = input('What is the password: ', 's');
+printGuesses = input('Print guesses? (0=no, 1=yes): ');
 
 %% Import Password Library
 
@@ -33,64 +33,71 @@ clearvars filename delimiter formatSpec fileID dataArray ans;
 
 %% Set Parameters
 
-alphabet = 'abc';
-%defghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²
-alphasizeA = size(alphabet);
-alphasize = alphasizeA(2);
-
+alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
 guess = ' ';
 counter = 0;
-%i = 0;
-%j = 0;
 
 %% Crack Password
 
+tic;
 % checks password against the library
-if counter < 0
-for i = 1:size(password)
-    counter = counter + 1;
-    guess = password(i);
-    if strcmp(guess, realpass) == 1
-        guess = guess{:};
-        break
+if counter <= 0
+    for i = 1:size(password)
+        counter = counter + 1;
+        guess = password(i);
+        if printGuesses
+            disp(['Now testing: ', guess]);
+        end
+        if strcmp(guess, realpass) == 1
+            guess = guess{:};
+            break
+        end
     end
 end
-end
-counter = counter + 1;
+
 % if password isn't found in library:
 if strcmp(guess, realpass) == 0
-    passLength = 1;
-    guess = ' '; % reset 'guess.'  It wasn't a common password
-    
-    while strcmp(guess, realpass) == 0
-        if guess(1:end) == alphabet(end)
-            passLength = passLength + 1;
+    maxPassLength = 8; %input('Max length of password to check: ');
+    for l = 1:maxPassLength,
+        
+        % Number of possible password for this length
+        combinationCount = length(alphabet)^l;
+        
+        % Put all possible combination in kind of a counter where each
+        % digit can run up to the number of elements in the alphabet
+        coordinate = cell(1,l);
+        size = length(alphabet) * ones(1,l);
+        
+        for index = 1:combinationCount,
+            % transform linear index into coordinate
+            [coordinate{:}] = ind2sub(size, index);
+            % build password from current coordinate
+            guess = cellfun(@(i)alphabet(i), coordinate);
+            
+            % Test if password is ok
+            if printGuesses
+                fprintf('Now testing: %s\n', guess);
+            end
+            counter = counter + 1;
+            if (strcmp(guess, realpass))
+                break;
+            end
+        end % ends for index=1:combinationCount
+        
+        if (strcmp(guess, realpass))
+            break;
         end
-        
-        x = 2;
-        n = ones(1, passLength);
-        n(1) = passLength;
-        while n > 0
-            n(x) = n(x - 1) - 1;
-            x = x + 1;
-        end
-        n = n(1:end-1);
-        %now you have [n] i.e. [4, 3, 2, 1]
-        
-        
-        guess(n) = guessfunc(alphabet, passLength, guess, n, i);
-        counter = counter + 1;
-        i = i + 1;
-        
-    end %ends while, checks guess
-    
-end %ends if strcmp(... if match
+    end % ends for l=1:maxPassLength
+end % ends if strcmp(guess, realpass) == 0
+
 
 %% Display Results
 
-disp(['Got it.  The password is "', guess, '".']);
+disp(['Got it.  The password is "', guess, '."']);
 if counter == 1
     disp(['It took ', num2str(counter), ' guess.']);
 else
     disp(['It took ', num2str(counter), ' guesses.']);
 end
+toc;
+
