@@ -39,7 +39,7 @@ counter = 0;
 
 %% Crack Password
 
-tic;
+tStart = tic;
 % checks password against the library
 if counter <= 0
     for i = 1:size(password)
@@ -90,14 +90,29 @@ if strcmp(guess, realpass) == 0
     end % ends for l=1:maxPassLength
 end % ends if strcmp(guess, realpass) == 0
 
+tElapsed = toc(tStart);
+
+%% Format Counter
+% Based on int2str2.m by Olivier Ledoit
+
+n = counter;
+s = int2str(abs(n));
+i = mod(-length(s),3);
+s = [repmat('0',[1 i]) s];
+j = length(s)/3;
+s = reshape([reshape(s,[3 j]);repmat(',',[1 j])],[1 4*j]);
+s([1:i 4*j]) = [];
+s = [repmat('-',[1 n<0]) s];
 
 %% Display Results
 
-disp(['Got it.  The password is "', guess, '."']);
-if counter == 1
-    disp(['It took ', num2str(counter), ' guess.']);
-else
-    disp(['It took ', num2str(counter), ' guesses.']);
+switch counter
+    case 1
+        disp(['Got it.  The password is "', guess, '".'; ...
+            'It took ', s, ' guess.'; ...
+            'Total time: ', num2str(tElapsed)]);
+    otherwise
+        disp(['Got it.  The password is "', guess, '".']);
+        disp(['It took ', s, ' guesses.']);
+        disp(['Total time: ', num2str(tElapsed), ' sec.']);
 end
-toc;
-
