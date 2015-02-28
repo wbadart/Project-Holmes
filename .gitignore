@@ -2,6 +2,8 @@
 *.asv
 *.prj
 PassCrackerGUI_resources/*
+*.orig
+.gitconfig
 =======
 *.asv
 >>>>>>> origin/n-length
