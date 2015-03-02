@@ -124,4 +124,72 @@ handles.passwordOut.String = guess;
 handles.timeBox.String = [num2str(tElapsed), ' sec'];
 handles.totalGuesses.String = s;
 
+%% Evaluate Password Strength
+
+if counter <= 10000
+    switch str2double(s(end))
+        case 1
+            if counter > 10
+                if str2double(s(end - 1)) == 1
+                    handles.feedbackPanel.String = (['Your password is the ', s, 'th most common password.  Change it now.']);
+                else
+                    handles.feedbackPanel.String = (['Your password is the ', s, 'st most common password.  Change it now.']);
+                end
+            else
+                handles.feedbackPanel.String = (['Your password is the ', s, 'st most common password.  Change it now.']);
+            end
+        case 2
+            if counter > 10
+                if str2double(s(end - 1)) == 1
+                    handles.feedbackPanel.String = (['Your password is the ', s, 'th most common password.  Change it now.']);
+                else
+                    handles.feedbackPanel.String = (['Your password is the ', s, 'nd most common password.  Change it now.']);
+                end
+            else
+                handles.feedbackPanel.String = (['Your password is the ', s, 'nd most common password.  Change it now.']);
+            end
+        case 3
+            if counter > 10
+                if str2double(s(end - 1)) == 1
+                    handles.feedbackPanel.String = (['Your password is the ', s, 'th most common password.  Change it now.']);
+                else
+                    handles.feedbackPanel.String = (['Your password is the ', s, 'rd most common password.  Change it now.']);
+                end
+            else
+                handles.feedbackPanel.String = (['Your password is the ', s, 'rd most common password.  Change it now.']);
+            end
+        otherwise
+            handles.feedbackPanel.String = (['Your password is the ', s, 'th most common password.  Change it now.']);
+    end
+    
+else
+    chars.lowers.sym = 'abcdefghijklmnopqrstuvwxyz';
+    chars.uppers.sym = upper(chars.lowers);
+    chars.nums.sym = '1234567890';
+    chars.spec.sym = '!@#$%^&*()-_=+[{]}\|;:''",<.>/?';
+    
+    chars.lowers.count = 0;
+    chars.uppers.count = 0;
+    chars.nums.count = 0;
+    chars.spec.count = 0;
+    
+    for i = 1:length(guess)
+        if ~isempty(strfind(chars.lowers.sym, guess(i)))
+            chars.lowers.count = chars.lowers.count + 1;
+        elseif ~isempty(strfind(chars.uppers.sym, guess(i)))
+            chars.uppers.count = chars.uppers.count + 1;
+        elseif ~isempty(strfind(chars.nums.sym, guess(i)))
+            chars.nums.count = chars.nums.count + 1;
+        elseif ~isempty(strfind(chars.spec.sym, guess(i)))
+            chars.spec.count = chars.spec.count + 1;
+        end 
+    end
+    
+    if length(guess) < 3
+        handles.feedbackPanel.String = 'The biggest problem is that your password is too short.  Add a few characters, shoot for at least 8.';
+    elseif (chars.spec.count == 0) && (chars.nums.count == 0)
+        handles.feedbackPanel.String = 'Your password doesn''t contain any numbers or special characters.  Add some for more security.';
+    end
+end
+
 end

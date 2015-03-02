@@ -115,6 +115,7 @@ function go_Callback(hObject, eventdata, handles)
 if strcmp(handles.passwordIn.Enable, 'on')
     if isempty(handles.passwordIn.String) == 0
         handles.passwordIn.Enable = 'off';
+        handles.feedbackPanel.String = '';
         pause(0.0000000000000001);
         crackerFunc(handles);
     end
