@@ -5,6 +5,7 @@ PassCrackerGUI_resources/*
 *.orig
 .gitconfig
 pauseTester.m
+pauseTestData.fig
 =======
 *.asv
 >>>>>>> origin/n-length
