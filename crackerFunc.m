@@ -1,4 +1,5 @@
-% cracker.m
+function [] = crackerFunc(handles)
+% crackerFunc.m
 
 % This program brute-force cracks a password.  What I'm thinking we can do
 % initially is start small, so have like a 2 character password, and see
@@ -14,12 +15,6 @@
 
 % See git for version control.
 
-clear;
-clc;
-
-realpass = input('What is the password: ', 's');
-printGuesses = input('Print guesses? (0=no, 1=yes): ');
-
 %% Import Password Library
 
 filename = 'commonPass.txt';
@@ -33,20 +28,25 @@ clearvars filename delimiter formatSpec fileID dataArray ans;
 
 %% Set Parameters
 
+realpass = handles.passwordIn.String;
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
 guess = ' ';
 counter = 0;
+if handles.guessbool.Value == 0
+    handles.currentGuess.String = '';
+end
 
 %% Crack Password
 
 tStart = tic;
 % checks password against the library
 if counter <= 0
-    for i = 1:size(password)
+    for i = 1:length(password)
         counter = counter + 1;
         guess = password(i);
-        if printGuesses
-            disp(['Now testing: ', guess]);
+        if handles.guessbool.Value == 1
+            handles.currentGuess.String = guess;
+            %disp(['Now guessing: ', guess]);
         end
         if strcmp(guess, realpass) == 1
             guess = guess{:};
@@ -75,8 +75,10 @@ if strcmp(guess, realpass) == 0
             guess = cellfun(@(i)alphabet(i), coordinate);
             
             % Test if password is ok
-            if printGuesses
-                fprintf('Now testing: %s\n', guess);
+            if handles.guessbool.Value == 1
+                pause(0.000000000000000000000000000000000000001);
+                handles.currentGuess.String = guess;
+                %fprintf('Now testing: %s\n', guess);
             end
             counter = counter + 1;
             if (strcmp(guess, realpass))
@@ -115,4 +117,11 @@ switch counter
         disp(['Got it.  The password is "', guess, '".']);
         disp(['It took ', s, ' guesses.']);
         disp(['Total time: ', num2str(tElapsed), ' sec.']);
+end
+
+handles.passwordIn.Enable = 'inactive';
+handles.passwordOut.String = guess;
+handles.timeBox.String = [num2str(tElapsed), ' sec'];
+handles.totalGuesses.String = s;
+
 end
