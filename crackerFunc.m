@@ -108,16 +108,16 @@ s = [repmat('-',[1 n<0]) s];
 
 %% Display Results
 
-switch counter
-    case 1
-        disp(['Got it.  The password is "', guess, '".'; ...
-            'It took ', s, ' guess.'; ...
-            'Total time: ', num2str(tElapsed)]);
-    otherwise
-        disp(['Got it.  The password is "', guess, '".']);
-        disp(['It took ', s, ' guesses.']);
-        disp(['Total time: ', num2str(tElapsed), ' sec.']);
-end
+% switch counter
+%     case 1
+%         disp(['Got it.  The password is "', guess, '".'; ...
+%             'It took ', s, ' guess.'; ...
+%             'Total time: ', num2str(tElapsed)]);
+%     otherwise
+%         disp(['Got it.  The password is "', guess, '".']);
+%         disp(['It took ', s, ' guesses.']);
+%         disp(['Total time: ', num2str(tElapsed), ' sec.']);
+% end
 
 handles.passwordIn.Enable = 'inactive';
 handles.passwordOut.String = guess;
