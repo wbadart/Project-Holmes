@@ -45,6 +45,7 @@ if counter <= 0
         counter = counter + 1;
         guess = password(i);
         if handles.guessbool.Value == 1
+            pause(0.00000001);
             handles.currentGuess.String = guess;
             %disp(['Now guessing: ', guess]);
         end
@@ -76,7 +77,7 @@ if strcmp(guess, realpass) == 0
             
             % Test if password is ok
             if handles.guessbool.Value == 1
-                pause(0.000000000000000000000000000000000000001);
+                pause(0.00000000000000000001);
                 handles.currentGuess.String = guess;
                 %fprintf('Now testing: %s\n', guess);
             end
