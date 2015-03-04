@@ -35,6 +35,8 @@ counter = 0;
 if handles.guessbool.Value == 0
     handles.currentGuess.String = '';
 end
+H = waitbar(0, 'Progress');
+timeout = str2double(handles.timeout.String);
 
 %% Crack Password
 
@@ -42,6 +44,7 @@ tStart = tic;
 % checks password against the library
 if counter <= 0
     for i = 1:length(password)
+        waitbar(toc(tStart) / timeout, H);
         counter = counter + 1;
         guess = password(i);
         if handles.guessbool.Value == 1
@@ -70,6 +73,9 @@ if strcmp(guess, realpass) == 0
         size = length(alphabet) * ones(1,l);
         
         for index = 1:combinationCount,
+            
+            waitbar(toc(tStart) / timeout, H);          
+            
             % transform linear index into coordinate
             [coordinate{:}] = ind2sub(size, index);
             % build password from current coordinate
@@ -82,12 +88,12 @@ if strcmp(guess, realpass) == 0
                 %fprintf('Now testing: %s\n', guess);
             end
             counter = counter + 1;
-            if (strcmp(guess, realpass))
+            if ((strcmp(guess, realpass)) || (toc(tStart) >= timeout))
                 break;
             end
         end % ends for index=1:combinationCount
         
-        if (strcmp(guess, realpass))
+        if ((strcmp(guess, realpass)) || (toc(tStart) >= timeout))
             break;
         end
     end % ends for l=1:maxPassLength
@@ -109,23 +115,23 @@ s = [repmat('-',[1 n<0]) s];
 
 %% Display Results
 
-% switch counter
-%     case 1
-%         disp(['Got it.  The password is "', guess, '".'; ...
-%             'It took ', s, ' guess.'; ...
-%             'Total time: ', num2str(tElapsed)]);
-%     otherwise
-%         disp(['Got it.  The password is "', guess, '".']);
-%         disp(['It took ', s, ' guesses.']);
-%         disp(['Total time: ', num2str(tElapsed), ' sec.']);
-% end
-
-handles.passwordIn.Enable = 'inactive';
-handles.passwordOut.String = guess;
+handles.passwordIn.Enable = 'on';
+if tElapsed < timeout
+    handles.passwordOut.String = guess;
+else
+    handles.passwordOut.String = '';
+end
 handles.timeBox.String = [num2str(tElapsed), ' sec'];
 handles.totalGuesses.String = s;
+handles.timeout.Enable = 'on';
+delete(H);
 
 %% Evaluate Password Strength
+
+if tElapsed >= timeout
+    handles.feedbackPanel.String = 'Timeout';
+    error('Timeout')
+end
 
 if counter <= 10000
     switch str2double(s(end))

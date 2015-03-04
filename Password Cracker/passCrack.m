@@ -22,7 +22,7 @@ function varargout = passCrack(varargin)
 
 % Edit the above text to modify the response to help passCrack
 
-% Last Modified by GUIDE v2.5 01-Mar-2015 16:32:04
+% Last Modified by GUIDE v2.5 03-Mar-2015 18:57:12
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -115,6 +115,7 @@ function go_Callback(hObject, eventdata, handles)
 if strcmp(handles.passwordIn.Enable, 'on')
     if isempty(handles.passwordIn.String) == 0
         handles.passwordIn.Enable = 'off';
+        handles.timeout.Enable = 'off';
         handles.feedbackPanel.String = '';
         pause(0.0000000000000001);
         crackerFunc(handles);
@@ -134,3 +135,77 @@ set(hObject, 'Enable', 'On');
 uicontrol(handles.passwordIn);
 handles.passwordIn.String = '';
 handles.passwordIn.ForegroundColor = [0 0 0];
+
+
+
+function timeout_Callback(hObject, eventdata, handles)
+% hObject    handle to timeout (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of timeout as text
+%        str2double(get(hObject,'String')) returns contents of timeout as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function timeout_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to timeout (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+
+
+% --- Executes on button press in upmin.
+function upmin_Callback(hObject, eventdata, handles)
+% hObject    handle to upmin (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a = str2double(handles.timeout.String);
+a = a + 60;
+handles.timeout.String = num2str(a);
+
+% --- Executes on button press in downmin.
+function downmin_Callback(hObject, eventdata, handles)
+% hObject    handle to downmin (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a = str2double(handles.timeout.String);
+a = a - 60;
+if a > 0
+    handles.timeout.String = num2str(a);
+else
+    a = 1;
+    handles.timeout.String = num2str(a);
+end
+
+% --- Executes on button press in upsec.
+function upsec_Callback(hObject, eventdata, handles)
+% hObject    handle to upsec (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a = str2double(handles.timeout.String);
+a = a + 5;
+handles.timeout.String = num2str(a);
+
+
+% --- Executes on button press in downsec.
+function downsec_Callback(hObject, eventdata, handles)
+% hObject    handle to downsec (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+a = str2double(handles.timeout.String);
+a = a - 5;
+if a > 0
+    handles.timeout.String = num2str(a);
+else
+    a = 1;
+    handles.timeout.String = num2str(a);
+end
