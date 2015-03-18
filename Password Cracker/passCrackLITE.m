@@ -29,7 +29,7 @@ counter = 0;
 %timeout = input('Max time (seconds): ');
 
 %% Crack Password
-
+tic;
 % checks password against the library
 if counter <= 0
     for i = 1:length(password)
@@ -73,3 +73,4 @@ if strcmp(guess, realpass) == 0
 end % ends if strcmp(guess, realpass) == 0
 
 disp(['The password is: ', guess]);
+toc
