@@ -1,13 +1,15 @@
-% passCrack-lite.m
+function [ results ] = passCrackLF(realpass, timeout)
 
-% Takes user inputted password and breaks it as fast as possible.  Doesn't
-% include all the features of the full passCrack program.
+% passCrackLF.m
+
+% This is the script passCrackLITE.m in function form.  This allows it to
+% be called by passTester.m.  Interesting note: other than the script vs.
+% function format, the code is identical, yet this file cracks passwords
+% roughly 3x faster.
 
 % Author:       Will Badart
 %               See git for version control
 
-clear;
-clc;
 
 %% Import Password Library
 
@@ -22,12 +24,15 @@ clearvars filename delimiter formatSpec fileID dataArray ans;
 
 %% Set Parameters
 
-realpass = input('Input password: ', 's');
+%realpass = input('Input password: ', 's');
 % unpotimized alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
 alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 guess = ' ';
 counter = 0;
-%timeout = input('Max time (seconds): ');
+% timeoutBool = 1;
+% if timeoutBool
+%     timeout = input('Max time (seconds): ');
+% end
 
 %% Crack Password
 tic;
@@ -35,7 +40,7 @@ tic;
 if counter <= 0
     for i = 1:length(password)
         guess = password(i);
-        if strcmp(guess, realpass) == 1
+        if (strcmp(guess, realpass) == 1) || (toc >= timeout)
             guess = guess{:};
             break
         end
@@ -62,12 +67,12 @@ if strcmp(guess, realpass) == 0
             % build password from current coordinate
             guess = cellfun(@(i)alphabet(i), coordinate);
             
-            if (strcmp(guess, realpass)) %|| (toc(tStart) >= timeout))
+            if (strcmp(guess, realpass)) || (toc >= timeout)
                 break;
             end
         end % ends for index=1:combinationCount
         
-        if (strcmp(guess, realpass)) %|| (toc(tStart) >= timeout))
+        if (strcmp(guess, realpass)) || (toc >= timeout)
             break;
         end
     end % ends for l=1:maxPassLength
@@ -75,3 +80,9 @@ end % ends if strcmp(guess, realpass) == 0
 
 %disp(['The password is: ', guess]);
 tElapsed = toc;
+counter = l * length(alphabet) + index; %brute force guesses only
+results.time = tElapsed;
+results.guess = guess;
+results.counter = counter;
+
+end
