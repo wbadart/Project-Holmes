@@ -49,6 +49,7 @@ end
 
 % if password isn't found in library:
 if strcmp(guess, realpass) == 0
+    i = i + 1;
     maxPassLength = 8; %input('Max length of password to check: ');
     for l = 1:maxPassLength,
         
@@ -80,7 +81,11 @@ end % ends if strcmp(guess, realpass) == 0
 
 %disp(['The password is: ', guess]);
 tElapsed = toc;
-counter = l * length(alphabet) + index; %brute force guesses only
+if i <= 10000
+    counter = i;
+else
+    counter = 10000 + length(alphabet) ^ l + index; %brute force guesses only
+end
 results.time = tElapsed;
 results.guess = guess;
 results.counter = counter;
