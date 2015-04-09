@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *.asv
 *.prj
 PassCrackerGUI_resources/*
@@ -6,7 +5,5 @@ PassCrackerGUI_resources/*
 .gitconfig
 pauseTester.m
 pauseTestData.fig
-"Git Bash.lnk"
-=======
+Git Bash.lnk
 *.asv
->>>>>>> origin/n-length
