@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.asv
 *.prj
 PassCrackerGUI_resources/*
@@ -6,10 +7,6 @@ PassCrackerGUI_resources/*
 .gitconfig
 pauseTester.m
 pauseTestData.fig
-<<<<<<< HEAD
-Git Bash.lnk
-*.asv
-=======
 =======
 *.asv
 >>>>>>> origin/n-length
@@ -18,13 +15,3 @@ Git Bash.lnk
 *.asv
 >>>>>>> n-length
 >>>>>>> origin/decrypt
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> master
-=======
->>>>>>> master
->>>>>>> diag
