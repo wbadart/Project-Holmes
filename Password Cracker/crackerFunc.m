@@ -35,7 +35,7 @@ counter = 0;
 if handles.guessbool.Value == 0
     handles.currentGuess.String = '';
 end
-H = waitbar(0, 'Progress');
+%H = waitbar(0, 'Progress');
 timeout = str2double(handles.timeout.String);
 
 %% Crack Password
@@ -44,7 +44,7 @@ tStart = tic;
 % checks password against the library
 if counter <= 0
     for i = 1:length(password)
-        waitbar(toc(tStart) / timeout, H);
+       % waitbar(toc(tStart) / timeout, H);
         counter = counter + 1;
         guess = password(i);
         if handles.guessbool.Value == 1
@@ -74,7 +74,7 @@ if strcmp(guess, realpass) == 0
         
         for index = 1:combinationCount,
             
-            waitbar(toc(tStart) / timeout, H);          
+            %waitbar(toc(tStart) / timeout, H);          
             
             % transform linear index into coordinate
             [coordinate{:}] = ind2sub(size, index);
@@ -124,7 +124,7 @@ end
 handles.timeBox.String = [num2str(tElapsed), ' sec'];
 handles.totalGuesses.String = s;
 handles.timeout.Enable = 'on';
-delete(H);
+%delete(H);
 
 %% Evaluate Password Strength
 
