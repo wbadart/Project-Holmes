@@ -37,15 +37,15 @@ counter = 0;
 %% Crack Password
 tic;
 % checks password against the library
-if counter <= 0
-    for i = 1:length(password)
-        guess = password(i);
-        if (strcmp(guess, realpass) == 1) || (toc >= timeout)
-            guess = guess{:};
-            break
-        end
-    end
-end
+% if counter <= 0
+%     for i = 1:length(password)
+%         guess = password(i);
+%         if (strcmp(guess, realpass) == 1) || (toc >= timeout)
+%             guess = guess{:};
+%             break
+%         end
+%     end
+% end
 
 % if password isn't found in library:
 if strcmp(guess, realpass) == 0
@@ -81,11 +81,15 @@ end % ends if strcmp(guess, realpass) == 0
 
 %disp(['The password is: ', guess]);
 tElapsed = toc;
+<<<<<<< Updated upstream
 if i <= 10000
     counter = i;
 else
     counter = 10000 + length(alphabet) ^ l + index; %brute force guesses only
 end
+=======
+counter = (length(alphabet) ^ l) + index; %brute force guesses only
+>>>>>>> Stashed changes
 results.time = tElapsed;
 results.guess = guess;
 results.counter = counter;
