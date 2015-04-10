@@ -18,5 +18,5 @@ Adding custom icon C:\Program Files\MATLAB\R2014b\toolbox\compiler\Resources\def
 Attempting to embed the CTF archive into the application C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Diagnostic Tools\DiagnosticsSuite\for_testing\DiagnosticsSuite.exe.
 Finished embedding CTF archive. Deleting the external CTF archive.
 Creating the bundle...
-Web based installer created at C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Diagnostic Tools\DiagnosticsSuite\for_redistribution\MyAppInstaller_web.exe.
+Web based installer created at C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Diagnostic Tools\DiagnosticsSuite\for_redistribution\installer_diagnostics.exe.
 Packaging complete.

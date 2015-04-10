@@ -6,6 +6,21 @@ function [ stat ] = passTester(realpass, N, timeout, alphabet, handles)
 
 format short g
 
+if alphabet == 4
+    prompt = {'Input characters to test:'};
+    alphabet = inputdlg(prompt);
+    alphabet = char(alphabet);
+else
+    switch alphabet
+        case 1
+            alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+        case 2
+            alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>''';
+        case 3
+            alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
+    end
+end
+
 t = zeros(1, N);
 guesses = zeros(1, N);
 for m = 1:N
@@ -48,45 +63,45 @@ s = reshape([reshape(s,[3 j]);repmat(',',[1 j])],[1 4*j]);
 s([1:i 4*j]) = [];
 s = [repmat('-',[1 n<0]) s];
 
-if counter <= 10000
+if (counter <= 10000) && (handles.commonBool.Value)
     switch str2double(s(end))
         case 1
             if counter > 10
                 if str2double(s(end - 1)) == 1
-                    feedback = (['Your password is the ', s, 'th most common password.  Change it now.']);
+                    feedbackStr = (['Your password is the ', s, 'th most common password.  Change it now.']);
                 else
-                    feedback = (['Your password is the ', s, 'st most common password.  Change it now.']);
+                    feedbackStr = (['Your password is the ', s, 'st most common password.  Change it now.']);
                 end
             else
-                feedback = (['Your password is the ', s, 'st most common password.  Change it now.']);
+                feedbackStr = (['Your password is the ', s, 'st most common password.  Change it now.']);
             end
         case 2
             if counter > 10
                 if str2double(s(end - 1)) == 1
-                    feedback = (['Your password is the ', s, 'th most common password.  Change it now.']);
+                    feedbackStr = (['Your password is the ', s, 'th most common password.  Change it now.']);
                 else
-                    feedback = (['Your password is the ', s, 'nd most common password.  Change it now.']);
+                    feedbackStr = (['Your password is the ', s, 'nd most common password.  Change it now.']);
                 end
             else
-                feedback = (['Your password is the ', s, 'nd most common password.  Change it now.']);
+                feedbackStr = (['Your password is the ', s, 'nd most common password.  Change it now.']);
             end
         case 3
             if counter > 10
                 if str2double(s(end - 1)) == 1
-                    feedback = (['Your password is the ', s, 'th most common password.  Change it now.']);
+                    feedbackStr = (['Your password is the ', s, 'th most common password.  Change it now.']);
                 else
-                    feedback = (['Your password is the ', s, 'rd most common password.  Change it now.']);
+                    feedbackStr = (['Your password is the ', s, 'rd most common password.  Change it now.']);
                 end
             else
-                feedback = (['Your password is the ', s, 'rd most common password.  Change it now.']);
+                feedbackStr = (['Your password is the ', s, 'rd most common password.  Change it now.']);
             end
         otherwise
-            feedback = (['Your password is the ', s, 'th most common password.  Change it now.']);
+            feedbackStr = (['Your password is the ', s, 'th most common password.  Change it now.']);
     end
     
 else
     chars.lowers.sym = 'abcdefghijklmnopqrstuvwxyz';
-    chars.uppers.sym = upper(chars.lowers);
+    chars.uppers.sym = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     chars.nums.sym = '1234567890';
     chars.spec.sym = '!@#$%^&*()-_=+[{]}\|;:''",<.>/?';
     
@@ -95,7 +110,7 @@ else
     chars.nums.count = 0;
     chars.spec.count = 0;
     
-    guess = results.guess;
+    guess = realpass;
     for i = 1:length(guess)
         if ~isempty(strfind(chars.lowers.sym, guess(i)))
             chars.lowers.count = chars.lowers.count + 1;
@@ -109,10 +124,14 @@ else
     end
     
     if length(guess) < 3
-        feedback = 'The biggest problem is that your password is too short.  Add a few characters, shoot for at least 8.';
+        feedbackStr = 'The biggest problem is that your password is too short.  Add a few characters, shoot for at least 8.';
     elseif (chars.spec.count == 0) && (chars.nums.count == 0)
-        feedback = 'Your password doesn''t contain any numbers or special characters.  Add some for more security.';
+        feedbackStr = 'Your password doesn''t contain any numbers or special characters.  Add some for more security.';
+    elseif (chars.spec.count == 0)
+        feedbackStr = 'Your password doesn''t have any special characters.  Add a few for more security.';
+    else
+        feedbackStr = 'Thumbs up.';
     end
 end
 
-handles.feedback.String = feedback;
+handles.feedback.String = feedbackStr;

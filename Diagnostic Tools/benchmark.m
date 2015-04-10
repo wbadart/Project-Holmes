@@ -87,7 +87,6 @@ handles.commonBool.Value = 0;
 
 pause(0.0001);
 stats = passTester('abc', 5, 60, 1, handles);
-disp(stats)
 
 handles.avgT.String = [num2str(stats.avgT), ' sec'];
 handles.avgC.String = num2str(stats.avgC);
@@ -108,7 +107,6 @@ handles.inputpass.Enable = 'off';
 pause(0.0001);
 stats = passTester(handles.inputpass.String, str2double(handles.iterText.String),...
     str2double(handles.timeout.String), handles.alphaChoice.Value, handles);
-disp(stats);
 
 handles.avgT.String = [num2str(stats.avgT), ' sec'];
 handles.avgC.String = num2str(stats.avgC);
@@ -431,7 +429,6 @@ handles.commonBool.Value = 0;
 
 pause(0.0001);
 stats = passTester('abcd', 20, 1, 1, handles);
-disp(stats)
 
 handles.avgT.String = [num2str(stats.avgT), ' sec'];
 handles.avgC.String = num2str(stats.avgC);
