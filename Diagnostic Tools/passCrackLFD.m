@@ -1,4 +1,4 @@
-function [ results ] = passCrackLFD(realpass, timeout, alphabet)
+function [ results ] = passCrackLFD(realpass, timeout, alphabet, handles)
 
 % passCrackLF.m (LITE, function, diagnostics version)
 
@@ -19,12 +19,37 @@ switch alphabet
         alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>''';
     case 3
         alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
-end 
+end
+
 guess = ' ';
+counter = 0;
+found = false;
 
 %% Crack Password
 tic;
 
+if handles.commonBool.Value
+    filename = 'commonPass.txt';
+    delimiter = '';
+    formatSpec = '%s%[^\n\r]';
+    fileID = fopen(filename,'r');
+    dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
+    fclose(fileID);
+    password = dataArray{:, 1};
+    clearvars filename delimiter formatSpec fileID dataArray ans;
+    
+    for i = 1:length(password)
+        guess = password(i);
+        counter = counter + 1;
+        if strcmp(guess, realpass) == 1
+            guess = guess{:};
+            found = true;
+            break
+        end
+    end
+end
+
+if ~strcmp(guess, realpass)
 maxPassLength = 8; %input('Max length of password to check: ');
 for l = 1:maxPassLength,
     
@@ -42,7 +67,6 @@ for l = 1:maxPassLength,
         [coordinate{:}] = ind2sub(size, index);
         % build password from current coordinate
         guess = cellfun(@(i)alphabet(i), coordinate);
-        
         if (strcmp(guess, realpass)) || (toc >= timeout)
             break;
         end
@@ -53,9 +77,17 @@ for l = 1:maxPassLength,
     end
 end % ends for l=1:maxPassLength
 
+end
+
 %disp(['The password is: ', guess]);
 tElapsed = toc;
-counter = length(alphabet) ^ l + index; %brute force guesses only
+if ~handles.commonBool.Value
+    counter = length(alphabet) ^ l + index; %brute force guesses only
+else
+    if ~found
+        counter = 10000 + length(alphabet) ^ l + index;
+    end
+end
 
 results.time = tElapsed;
 results.guess = guess;

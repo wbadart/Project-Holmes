@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 24-Mar-2015 17:43:19
+% Last Modified by GUIDE v2.5 09-Apr-2015 20:36:45
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -78,7 +78,26 @@ function standard_Callback(hObject, eventdata, handles)
 % hObject    handle to standard (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+handles.inputpass.String = 'abc';
+handles.inputpass.Enable = 'off';
+handles.timeout.String = '60';
+handles.iterText.String = '5';
+handles.iterSlide.Value = 5;
+handles.commonBool.Value = 0;
 
+pause(0.0001);
+stats = passTester('abc', 5, 60, 1, handles);
+disp(stats)
+
+handles.avgT.String = [num2str(stats.avgT), ' sec'];
+handles.avgC.String = num2str(stats.avgC);
+handles.avgPerSec.String = num2str(stats.avgPerSec);
+handles.totalT.String = [num2str(sum(stats.allT)), ' sec'];
+handles.totalG.String = num2str(sum(stats.allC));
+
+handles.inputpass.Enable = 'on';
+handles.inputpass.ForegroundColor = 'black';
+handles.feedback.String = '';
 
 % --- Executes on button press in custom.
 function custom_Callback(hObject, eventdata, handles)
@@ -88,8 +107,17 @@ function custom_Callback(hObject, eventdata, handles)
 handles.inputpass.Enable = 'off';
 pause(0.0001);
 stats = passTester(handles.inputpass.String, str2double(handles.iterText.String),...
-    str2double(handles.timeout.String), handles.alphaChoice.Value);
+    str2double(handles.timeout.String), handles.alphaChoice.Value, handles);
 disp(stats);
+
+handles.avgT.String = [num2str(stats.avgT), ' sec'];
+handles.avgC.String = num2str(stats.avgC);
+handles.avgPerSec.String = num2str(stats.avgPerSec);
+handles.totalT.String = [num2str(sum(stats.allT)), ' sec'];
+handles.totalG.String = num2str(sum(stats.allC));
+
+handles.inputpass.Enable = 'on';
+handles.inputpass.ForegroundColor = 'black';
 
 
 % --- Executes during object creation, after setting all properties.
@@ -291,6 +319,160 @@ function alphaChoice_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function avgC_Callback(hObject, eventdata, handles)
+% hObject    handle to avgC (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of avgC as text
+%        str2double(get(hObject,'String')) returns contents of avgC as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function avgC_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to avgC (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function avgPerSec_Callback(hObject, eventdata, handles)
+% hObject    handle to avgPerSec (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of avgPerSec as text
+%        str2double(get(hObject,'String')) returns contents of avgPerSec as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function avgPerSec_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to avgPerSec (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function totalT_Callback(hObject, eventdata, handles)
+% hObject    handle to totalT (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of totalT as text
+%        str2double(get(hObject,'String')) returns contents of totalT as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function totalT_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to totalT (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function totalG_Callback(hObject, eventdata, handles)
+% hObject    handle to totalG (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of totalG as text
+%        str2double(get(hObject,'String')) returns contents of totalG as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function totalG_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to totalG (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in max.
+function max_Callback(hObject, eventdata, handles)
+% hObject    handle to max (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+handles.inputpass.String = 'abcd';
+handles.inputpass.Enable = 'off';
+handles.timeout.String = '1';
+handles.iterText.String = '20';
+handles.iterSlide.Value = 20;
+handles.commonBool.Value = 0;
+
+pause(0.0001);
+stats = passTester('abcd', 20, 1, 1, handles);
+disp(stats)
+
+handles.avgT.String = [num2str(stats.avgT), ' sec'];
+handles.avgC.String = num2str(stats.avgC);
+handles.avgPerSec.String = num2str(stats.avgPerSec);
+handles.totalT.String = [num2str(sum(stats.allT)), ' sec'];
+handles.totalG.String = num2str(sum(stats.allC));
+
+score = 100 * stats.avgPerSec / 400000;
+handles.score.String = num2str(score);
+
+handles.inputpass.Enable = 'on';
+handles.inputpass.ForegroundColor = 'black';
+handles.feedback.String = '';
+
+
+% --- Executes on button press in commonBool.
+function commonBool_Callback(hObject, eventdata, handles)
+% hObject    handle to commonBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of commonBool
+
+
+
+function guess_Callback(hObject, eventdata, handles)
+% hObject    handle to guess (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of guess as text
+%        str2double(get(hObject,'String')) returns contents of guess as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function guess_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to guess (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
