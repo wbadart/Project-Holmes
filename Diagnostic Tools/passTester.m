@@ -6,7 +6,13 @@ function [ stat ] = passTester(realpass, N, timeout, alphabet, handles)
 
 format short g
 
-if alphabet == 4
+chars.lowers.sym = 'abcdefghijklmnopqrstuvwxyz';
+chars.uppers.sym = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+chars.nums.sym = '1234567890';
+chars.spec.sym = '!@#$%^&*()-_=+[{]}\|;:''",<.>/?';
+chars.foreign.sym = 'üéäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑÿß';
+
+if alphabet == 5
     prompt = {'Input characters to test:'};
     alphabet = inputdlg(prompt);
     alphabet = char(alphabet);
@@ -18,6 +24,23 @@ else
             alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>''';
         case 3
             alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[{]}\|";:/?.>'',<ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥?ƒáíóúñÑªº¿¬½¼¡«»ßµ°·²';
+        case 4
+            alphabet = '';
+            if handles.lowerBool.Value
+                alphabet = [alphabet, chars.lowers.sym];
+            end
+            if handles.upperBool.Value
+                alphabet = [alphabet, chars.uppers.sym];
+            end
+            if handles.numBool.Value
+                alphabet = [alphabet, chars.nums.sym];
+            end
+            if handles.specBool.Value
+                alphabet = [alphabet, chars.spec.sym];
+            end
+            if handles.foreignBool.Value
+                alphabet = [alphabet, chars.foreign,sym];
+            end
     end
 end
 
@@ -100,11 +123,6 @@ if (counter <= 10000) && (handles.commonBool.Value)
     end
     
 else
-    chars.lowers.sym = 'abcdefghijklmnopqrstuvwxyz';
-    chars.uppers.sym = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    chars.nums.sym = '1234567890';
-    chars.spec.sym = '!@#$%^&*()-_=+[{]}\|;:''",<.>/?';
-    
     chars.lowers.count = 0;
     chars.uppers.count = 0;
     chars.nums.count = 0;

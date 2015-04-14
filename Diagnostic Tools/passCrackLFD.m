@@ -14,12 +14,12 @@ function [ results ] = passCrackLFD(realpass, timeout, alphabet, handles)
 
 guess = ' ';
 counter = 0;
-found = false;
 
 %% Crack Password
 tic;
 
 if handles.commonBool.Value
+    found = false;
     filename = 'commonPass.txt';
     delimiter = '';
     formatSpec = '%s%[^\n\r]';
@@ -40,9 +40,34 @@ if handles.commonBool.Value
     end
 end
 
+if ((handles.dictBool.Value) && (~strcmp(guess, realpass)))
+    found = false;
+    filename = 'dictionary.txt';
+    delimiter = '';
+    formatSpec = '%s%[^\n\r]';
+    fileID = fopen(filename,'r');
+    dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
+    fclose(fileID);
+    password = dataArray{:, 1};
+    clearvars filename delimiter formatSpec fileID dataArray ans;
+    
+    for i = 1:length(password)
+        guess = password(i);
+        counter = counter + 1;
+        if strcmp(guess, realpass) == 1
+            guess = guess{:};
+            found = true;
+            break
+        end
+    end
+end
+
+
 if ~strcmp(guess, realpass)
 maxPassLength = 8; %input('Max length of password to check: ');
 for l = 1:maxPassLength,
+    
+    handles.guesslength.String = num2str(l);
     
     % Number of possible password for this length
     combinationCount = length(alphabet)^l;
@@ -58,6 +83,7 @@ for l = 1:maxPassLength,
         [coordinate{:}] = ind2sub(size, index);
         % build password from current coordinate
         guess = cellfun(@(i)alphabet(i), coordinate);
+        
         if (strcmp(guess, realpass)) || (toc >= timeout)
             break;
         end
@@ -66,17 +92,20 @@ for l = 1:maxPassLength,
     if (strcmp(guess, realpass)) || (toc >= timeout)
         break;
     end
+    
+    
+    
 end % ends for l=1:maxPassLength
 
 end
 
 %disp(['The password is: ', guess]);
 tElapsed = toc;
-if ~handles.commonBool.Value
+if ~((handles.commonBool.Value || handles.dictBool.Value))
     counter = length(alphabet) ^ l + index; %brute force guesses only
 else
     if ~found
-        counter = 10000 + length(alphabet) ^ l + index;
+        counter = 10000+ 349900 + length(alphabet) ^ l + index;
     end
 end
 

@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 09-Apr-2015 20:36:45
+% Last Modified by GUIDE v2.5 14-Apr-2015 17:09:16
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -308,6 +308,11 @@ function alphaChoice_Callback(hObject, eventdata, handles)
 
 % Hints: contents = cellstr(get(hObject,'String')) returns alphaChoice contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from alphaChoice
+if handles.alphaChoice.Value == 4
+    handles.uipanel3.Visible = 'on';
+else
+    handles.uipanel3.Visible = 'off';
+end
 
 
 % --- Executes during object creation, after setting all properties.
@@ -474,3 +479,90 @@ function guess_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in showBool.
+function showBool_Callback(hObject, eventdata, handles)
+% hObject    handle to showBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of showBool
+
+
+
+function guesslength_Callback(hObject, eventdata, handles)
+% hObject    handle to guesslength (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of guesslength as text
+%        str2double(get(hObject,'String')) returns contents of guesslength as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function guesslength_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to guesslength (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+% --- Executes on button press in lowerBool.
+function lowerBool_Callback(hObject, eventdata, handles)
+% hObject    handle to lowerBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of lowerBool
+
+
+% --- Executes on button press in upperBool.
+function upperBool_Callback(hObject, eventdata, handles)
+% hObject    handle to upperBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of upperBool
+
+
+% --- Executes on button press in numBool.
+function numBool_Callback(hObject, eventdata, handles)
+% hObject    handle to numBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of numBool
+
+
+% --- Executes on button press in specBool.
+function specBool_Callback(hObject, eventdata, handles)
+% hObject    handle to specBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of specBool
+
+
+% --- Executes on button press in foreignBool.
+function foreignBool_Callback(hObject, eventdata, handles)
+% hObject    handle to foreignBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of foreignBool
+
+
+% --- Executes on button press in dictBool.
+function dictBool_Callback(hObject, eventdata, handles)
+% hObject    handle to dictBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of dictBool
