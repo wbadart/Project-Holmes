@@ -154,27 +154,24 @@ else
         end
     end
     if (chars.spec.count == 0)
-        if ~isempty(feedbackStr)
+         if ~isempty(feedbackStr)
             feedbackStr = [feedbackStr, '  Add symbols to increase the security of your password.'];
         else
-            feedbackStr = [feedbackStr, 'Add symbols to increase the security of your password.'];
-        end
+        feedbackStr = [feedbackStr, 'Add symbols to increase the security of your password.'];
     end
     if (chars.nums.count==0)
         if ~isempty(feedbackStr)
             feedbackStr = [feedbackStr, '  Add numbers to increase the security of your password.'];
         else
-            feedbackStr=[feedbackStr, 'Add numbers to increase the security of your password.'];
-        end
+        feedbackStr=[feedbackStr, 'Add numbers to increase the security of your password.'];
     end
     if (chars.spec.count==length(guess))
         if ~isempty(feedbackStr)
-            feedbackStr = [feedbackStr, '  Add letters to increase the security of your password.'];
+            feedbackStr = [feedbackStr, '  Add symbols to increase the security of your password.'];
         else
-            feedbackStr= [feedbackStr, 'Add letters to increase the security of your password.'];
-        end
+        feedbackStr= [feedbackStr, 'Add letters to increase the security of your password.'];
     end
-    if isempty(feedbackStr)
+    if isempty(feedbackStr)        
         feedbackStr = [feedbackStr, 'Thumbs up.'];
     end
 end
