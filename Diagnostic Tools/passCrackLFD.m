@@ -48,11 +48,12 @@ if ((handles.dictBool.Value) && (~strcmp(guess, realpass)))
     fileID = fopen(filename,'r');
     dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
     fclose(fileID);
-    password = dataArray{:, 1};
+    dictionary = dataArray{:, 1};
+    results.dictionary = dictionary;
     clearvars filename delimiter formatSpec fileID dataArray ans;
     
-    for i = 1:length(password)
-        guess = password(i);
+    for i = 1:length(dictionary)
+        guess = dictionary(i);
         counter = counter + 1;
         if strcmp(guess, realpass) == 1
             guess = guess{:};

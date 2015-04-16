@@ -144,6 +144,14 @@ else
         end
     end
     
+    inDict = false;
+    for i = 1:length(results.dictionary)
+        if ~isempty(strfind(guess, char(results.dictionary(i))))
+            inDict = true;
+        end
+    end
+    
+    
     % Construct feedback
     feedbackStr='';
     if length(guess) < 8
@@ -186,6 +194,13 @@ else
             feedbackStr=[feedbackStr, '  Add lowercase letters to increase the security of your password.'];
         else
             feedbackStr=[feedbackStr, 'Add lowercase letters to increase the security of your password.'];
+        end
+    end
+    if inDict
+        if ~isempty(feedbackStr)
+            feedbackStr = [feedbackStr, '  Part or all of your password was found in the dictionary.'];
+        else
+            feedbackStr = [feedbackStr, 'Part or all of your password was found in the dictionary.'];
         end
     end
     if isempty(feedbackStr)
