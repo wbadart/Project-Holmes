@@ -174,6 +174,20 @@ else
             feedbackStr= [feedbackStr, 'Add letters to increase the security of your password.'];
         end
     end
+    if(chars.uppers.count==0)
+        if ~isempty(feedbackStr)
+            feedbackStr=[feedbackStr, '  Add uppercase letters to increase the security of your password.'];
+        else
+            feedbackStr=[feedbackStr, 'Add uppercase letters to increase the security of your password.'];
+        end
+    end
+    if(chars.lowers.count==0)
+        if ~isempty(feedbackStr)
+            feedbackStr=[feedbackStr, '  Add lowercase letters to increase the security of your password.'];
+        else
+            feedbackStr=[feedbackStr, 'Add lowercase letters to increase the security of your password.'];
+        end
+    end
     if isempty(feedbackStr)
         feedbackStr = [feedbackStr, 'Thumbs up.'];
     end
