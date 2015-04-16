@@ -40,18 +40,18 @@ if handles.commonBool.Value
     end
 end
 
+found = false;
+filename = 'dictionary.txt';
+delimiter = '';
+formatSpec = '%s%[^\n\r]';
+fileID = fopen(filename,'r');
+dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
+fclose(fileID);
+dictionary = dataArray{:, 1};
+results.dictionary = dictionary;
+clearvars filename delimiter formatSpec fileID dataArray ans;
+
 if ((handles.dictBool.Value) && (~strcmp(guess, realpass)))
-    found = false;
-    filename = 'dictionary.txt';
-    delimiter = '';
-    formatSpec = '%s%[^\n\r]';
-    fileID = fopen(filename,'r');
-    dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
-    fclose(fileID);
-    dictionary = dataArray{:, 1};
-    results.dictionary = dictionary;
-    clearvars filename delimiter formatSpec fileID dataArray ans;
-    
     for i = 1:length(dictionary)
         guess = dictionary(i);
         counter = counter + 1;
