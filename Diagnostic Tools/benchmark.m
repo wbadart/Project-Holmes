@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 16-Apr-2015 22:40:38
+% Last Modified by GUIDE v2.5 16-Apr-2015 22:47:33
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -647,9 +647,11 @@ function allMethods_Callback(hObject, eventdata, handles)
 % hObject    handle to allMethods (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-handles.commonBool.Value = 1;
-handles.dictBool.Value = 1;
-handles.modDictBool.Value = 1;
+if ~handles.crackerBool.Value
+    handles.commonBool.Value = 1;
+    handles.dictBool.Value = 1;
+    handles.modDictBool.Value = 1;
+end
 
 % --- Executes on button press in noMethods.
 function noMethods_Callback(hObject, eventdata, handles)

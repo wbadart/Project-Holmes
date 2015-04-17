@@ -80,10 +80,23 @@ elseif handles.crackerBool.Value
         guesses(m) = results.counter;
     end
 elseif handles.modularBool.Value
+    results.isfound = 0;
     for m = 1:N
-        results = modular(realpass, timeout, alphabet, library, handles);
-        t(m) = results.time;
-        guesses(m) = results.counter;
+        if handles.commonBool.Value
+            results = commonPass(realpass, timeout, library.common, handles);
+            t(m) = results.time;
+            guesses(m) = results.counter;
+        end
+        if (handles.dictBool.Value && ~results.isfound)
+            results = dictAttack(realpass, timeout, library.dictionary, handles);
+            t(m) = results.time;
+            guesses(m) = results.counter;
+        end
+        if (handles.modDictBool.Value && ~results.isfound)
+            results = modDictAttack(realpass, timeout, library.dictionary, handles);
+            t(m) = results.time;
+            guesses(m) = results.counter;
+        end
     end
 end
 
