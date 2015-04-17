@@ -44,13 +44,49 @@ else
     end
 end
 
+filename = 'dictionary.txt';
+delimiter = '';
+formatSpec = '%s%[^\n\r]';
+fileID = fopen(filename,'r');
+dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
+fclose(fileID);
+dictionary = dataArray{:, 1};
+clearvars filename delimiter formatSpec fileID dataArray ans;
+
+filename = 'commonPass.txt';
+delimiter = '';
+formatSpec = '%s%[^\n\r]';
+fileID = fopen(filename,'r');
+dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
+fclose(fileID);
+common = dataArray{:, 1};
+clearvars filename delimiter formatSpec fileID dataArray ans;
+
+library.common = common;
+library.dictionary = dictionary;
+
 t = zeros(1, N);
 guesses = zeros(1, N);
-for m = 1:N
-    results = passCrackLFD(realpass, timeout, alphabet, handles);
-    t(m) = results.time;
-    guesses(m) = results.counter;
+if handles.lfdBool.Value
+    for m = 1:N
+        results = passCrackLFD(realpass, timeout, alphabet, library, handles);
+        t(m) = results.time;
+        guesses(m) = results.counter;
+    end
+elseif handles.crackerBool.Value
+    for m = 1:N
+        results = cracker(realpass, timeout, alphabet, handles);
+        t(m) = results.time;
+        guesses(m) = results.counter;
+    end
+elseif handles.modularBool.Value
+    for m = 1:N
+        results = modular(realpass, timeout, alphabet, library, handles);
+        t(m) = results.time;
+        guesses(m) = results.counter;
+    end
 end
+
 
 stat.allT = t;
 stat.avgT = sum(t) / N;
@@ -145,8 +181,8 @@ else
     end
     
     inDict = false;
-    for i = 1:length(results.dictionary)
-        if ~isempty(strfind(guess, char(results.dictionary(i))))
+    for i = 1:length(dictionary)
+        if ~isempty(strfind(guess, char(dictionary(i))))
             inDict = true;
         end
     end
@@ -203,6 +239,22 @@ else
             feedbackStr = [feedbackStr, 'Part or all of your password was found in the dictionary.'];
         end
     end
+    minTime = timeout - 0.1;
+    maxTime = timeout + 0.1;
+    if ((stat.avgT >= minTime) && (stat.avgT <= maxTime))
+        if ~isempty(feedbackStr)
+            feedbackStr = [feedbackStr, '  Timeout.'];
+        else
+            feedbackStr = [feedbackStr, 'Timeout.'];
+        end
+    else
+        if ~isempty(feedbackStr)
+            feedbackStr = [feedbackStr, '  Broken via ', results.found];
+        else
+            feedbackStr = [feedbackStr, 'Broken via ', results.found];
+        end
+    end
+    
     if isempty(feedbackStr)
         feedbackStr = [feedbackStr, 'Thumbs up.'];
     end

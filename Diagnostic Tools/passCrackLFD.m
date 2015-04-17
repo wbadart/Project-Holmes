@@ -1,4 +1,4 @@
-function [ results ] = passCrackLFD(realpass, timeout, alphabet, handles)
+function [ results ] = passCrackLFD(realpass, timeout, alphabet, library, handles)
 
 % passCrackLF.m (LITE, function, diagnostics version)
 
@@ -12,52 +12,68 @@ function [ results ] = passCrackLFD(realpass, timeout, alphabet, handles)
 
 %% Set Parameters
 
-guess = ' ';
+guess = '';
 counter = 0;
+found = false;
+dictionary = library.dictionary;
+common = library.common;
+nums = '0123456789';
 
 %% Crack Password
 tic;
 
 if handles.commonBool.Value
-    found = false;
-    filename = 'commonPass.txt';
-    delimiter = '';
-    formatSpec = '%s%[^\n\r]';
-    fileID = fopen(filename,'r');
-    dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
-    fclose(fileID);
-    password = dataArray{:, 1};
-    clearvars filename delimiter formatSpec fileID dataArray ans;
-    
-    for i = 1:length(password)
-        guess = password(i);
+    pause(0.001);
+    handles.guesslength.String = 'common check';
+    pause(0.001);
+    for i = 1:length(common)
+        guess = common(i);
         counter = counter + 1;
         if strcmp(guess, realpass) == 1
             guess = guess{:};
             found = true;
+            results.found = 'common password attack.';
             break
         end
     end
 end
 
-found = false;
-filename = 'dictionary.txt';
-delimiter = '';
-formatSpec = '%s%[^\n\r]';
-fileID = fopen(filename,'r');
-dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
-fclose(fileID);
-dictionary = dataArray{:, 1};
-results.dictionary = dictionary;
-clearvars filename delimiter formatSpec fileID dataArray ans;
-
 if ((handles.dictBool.Value) && (~strcmp(guess, realpass)))
+    pause(0.001);
+    handles.guesslength.String = 'dict attack';
+    pause(0.001);
     for i = 1:length(dictionary)
         guess = dictionary(i);
         counter = counter + 1;
         if strcmp(guess, realpass) == 1
             guess = guess{:};
             found = true;
+            results.found = 'dictionary attack.';
+            break
+        end
+    end
+end
+
+if ((handles.modDictBool.Value) && ~strcmp(guess, realpass))
+    pause(0.001);
+    handles.guesslength.String = 'mod dict';
+    pause(0.001);
+    for i = 1:length(dictionary)
+        for j = 1:length(nums)
+            for k = 1:length(nums)
+                guess = cell2mat([dictionary(i), nums(j), nums(k)]);
+                counter = counter + 1;
+                if strcmp(guess, realpass)
+                    found = true;
+                    results.found = 'modified dictionary attack.';
+                    break
+                end
+            end
+            if strcmp(guess, realpass)
+                break
+            end
+        end
+        if strcmp(guess, realpass)
             break
         end
     end
@@ -68,7 +84,9 @@ if ~strcmp(guess, realpass)
 maxPassLength = 8; %input('Max length of password to check: ');
 for l = 1:maxPassLength,
     
+    pause(0.001);
     handles.guesslength.String = num2str(l);
+    pause(0.001);
     
     % Number of possible password for this length
     combinationCount = length(alphabet)^l;
@@ -102,11 +120,13 @@ end
 
 %disp(['The password is: ', guess]);
 tElapsed = toc;
-if ~((handles.commonBool.Value || handles.dictBool.Value))
+if ~((handles.commonBool.Value || handles.dictBool.Value || handles.modDictBool.Value))
     counter = length(alphabet) ^ l + index; %brute force guesses only
+    results.found = 'brute force.';
 else
     if ~found
-        counter = 10000+ 349900 + length(alphabet) ^ l + index;
+        counter = counter + length(alphabet) ^ l + index;
+        results.found = 'brute force.';
     end
 end
 

@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 14-Apr-2015 17:09:16
+% Last Modified by GUIDE v2.5 16-Apr-2015 22:40:38
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -309,9 +309,21 @@ function alphaChoice_Callback(hObject, eventdata, handles)
 % Hints: contents = cellstr(get(hObject,'String')) returns alphaChoice contents as cell array
 %        contents{get(hObject,'Value')} returns selected item from alphaChoice
 if handles.alphaChoice.Value == 4
-    handles.uipanel3.Visible = 'on';
+    handles.lowerBool.Enable = 'on';
+    handles.upperBool.Enable = 'on';
+    handles.numBool.Enable = 'on';
+    handles.specBool.Enable = 'on';
+    handles.foreignBool.Enable = 'on';
+    handles.text33.Enable = 'on';
+    handles.alphaCount.Enable = 'on';
 else
-    handles.uipanel3.Visible = 'off';
+    handles.lowerBool.Enable = 'off';
+    handles.upperBool.Enable = 'off';
+    handles.numBool.Enable = 'off';
+    handles.specBool.Enable = 'off';
+    handles.foreignBool.Enable = 'off'; 
+    handles.text33.Enable = 'off';
+    handles.alphaCount.Enable = 'off';
 end
 
 
@@ -521,7 +533,13 @@ function lowerBool_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of lowerBool
-
+a = str2double(handles.alphaCount.String);
+if handles.lowerBool.Value
+    a = a + 26;
+else
+    a = a - 26;
+end
+handles.alphaCount.String = num2str(a);
 
 % --- Executes on button press in upperBool.
 function upperBool_Callback(hObject, eventdata, handles)
@@ -530,7 +548,13 @@ function upperBool_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of upperBool
-
+a = str2double(handles.alphaCount.String);
+if handles.upperBool.Value
+    a = a + 26;
+else
+    a = a - 26;
+end
+handles.alphaCount.String = num2str(a);
 
 % --- Executes on button press in numBool.
 function numBool_Callback(hObject, eventdata, handles)
@@ -539,7 +563,13 @@ function numBool_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of numBool
-
+a = str2double(handles.alphaCount.String);
+if handles.numBool.Value
+    a = a + 10;
+else
+    a = a - 10;
+end
+handles.alphaCount.String = num2str(a);
 
 % --- Executes on button press in specBool.
 function specBool_Callback(hObject, eventdata, handles)
@@ -548,7 +578,13 @@ function specBool_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of specBool
-
+a = str2double(handles.alphaCount.String);
+if handles.specBool.Value
+    a = a + 30;
+else
+    a = a - 30;
+end
+handles.alphaCount.String = num2str(a);
 
 % --- Executes on button press in foreignBool.
 function foreignBool_Callback(hObject, eventdata, handles)
@@ -557,7 +593,13 @@ function foreignBool_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of foreignBool
-
+a = str2double(handles.alphaCount.String);
+if handles.foreignBool.Value
+    a = a + 38;
+else
+    a = a - 38;
+end
+handles.alphaCount.String = num2str(a);
 
 % --- Executes on button press in dictBool.
 function dictBool_Callback(hObject, eventdata, handles)
@@ -566,3 +608,66 @@ function dictBool_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of dictBool
+
+
+% --- Executes on button press in modDictBool.
+function modDictBool_Callback(hObject, eventdata, handles)
+% hObject    handle to modDictBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of modDictBool
+
+
+
+function alphaCount_Callback(hObject, eventdata, handles)
+% hObject    handle to alphaCount (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of alphaCount as text
+%        str2double(get(hObject,'String')) returns contents of alphaCount as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function alphaCount_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to alphaCount (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in allMethods.
+function allMethods_Callback(hObject, eventdata, handles)
+% hObject    handle to allMethods (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+handles.commonBool.Value = 1;
+handles.dictBool.Value = 1;
+handles.modDictBool.Value = 1;
+
+% --- Executes on button press in noMethods.
+function noMethods_Callback(hObject, eventdata, handles)
+% hObject    handle to noMethods (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+handles.commonBool.Value = 0;
+handles.dictBool.Value = 0;
+handles.modDictBool.Value = 0;
+
+
+% --- Executes on button press in crackerBool.
+function crackerBool_Callback(hObject, eventdata, handles)
+% hObject    handle to crackerBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of crackerBool
+handles.commonBool.Value = 0;
+handles.dictBool.Value = 0;
+handles.modDictBool.Value = 0;
