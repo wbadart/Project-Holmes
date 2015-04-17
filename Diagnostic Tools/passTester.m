@@ -97,6 +97,11 @@ elseif handles.modularBool.Value
             t(m) = results.time;
             guesses(m) = results.counter;
         end
+        if ~results.isfound
+            results = cracker(realpass, timeout, alphabet, handles);
+            t(m) = results.time;
+            guesses(m) = results.counter;
+        end
     end
 end
 

@@ -24,5 +24,4 @@ results.isfound = false;
 if strcmp(guess, realpass)
     results.isfound = true;
 end
-
 end
