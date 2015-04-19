@@ -80,8 +80,8 @@ elseif handles.crackerBool.Value
         guesses(m) = results.counter;
     end
 elseif handles.modularBool.Value
-    results.isfound = 0;
     for m = 1:N
+        results.isfound = false;
         if handles.commonBool.Value
             results = commonPass(realpass, timeout, library.common, handles);
             t(m) = results.time;
@@ -97,7 +97,7 @@ elseif handles.modularBool.Value
             t(m) = results.time;
             guesses(m) = results.counter;
         end
-        if ~results.isfound
+        if results.isfound == false
             results = cracker(realpass, timeout, alphabet, handles);
             t(m) = results.time;
             guesses(m) = results.counter;

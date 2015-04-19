@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 16-Apr-2015 22:47:33
+% Last Modified by GUIDE v2.5 18-Apr-2015 18:28:49
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -85,8 +85,28 @@ handles.iterText.String = '5';
 handles.iterSlide.Value = 5;
 handles.commonBool.Value = 0;
 
+handles.commonBool.Enable = 'off';
+handles.dictBool.Enable = 'off';
+handles.modDictBool.Enable = 'off';
+handles.lfdBool.Enable = 'off';
+handles.crackerBool.Enable = 'off';
+handles.modularBool.Enable = 'off';
+handles.alphaChoice.Enable = 'off';
+handles.timeout.Enable = 'off';
+handles.iterText.Enable = 'off';
+
 pause(0.0001);
 stats = passTester('abc', 5, 60, 1, handles);
+
+handles.commonBool.Enable = 'on';
+handles.dictBool.Enable = 'on';
+handles.modDictBool.Enable = 'on';
+handles.lfdBool.Enable = 'on';
+handles.crackerBool.Enable = 'on';
+handles.modularBool.Enable = 'on';
+handles.alphaChoice.Enable = 'on';
+handles.timeout.Enable = 'on';
+handles.iterText.Enable = 'on';
 
 handles.avgT.String = [num2str(stats.avgT), ' sec'];
 handles.avgC.String = num2str(stats.avgC);
@@ -104,9 +124,32 @@ function custom_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 handles.inputpass.Enable = 'off';
+
+handles.commonBool.Enable = 'off';
+handles.dictBool.Enable = 'off';
+handles.modDictBool.Enable = 'off';
+handles.lfdBool.Enable = 'off';
+handles.crackerBool.Enable = 'off';
+handles.modularBool.Enable = 'off';
+handles.alphaChoice.Enable = 'off';
+handles.timeout.Enable = 'off';
+handles.iterText.Enable = 'off';
+
+
 pause(0.0001);
 stats = passTester(handles.inputpass.String, str2double(handles.iterText.String),...
     str2double(handles.timeout.String), handles.alphaChoice.Value, handles);
+
+handles.commonBool.Enable = 'on';
+handles.dictBool.Enable = 'on';
+handles.modDictBool.Enable = 'on';
+handles.lfdBool.Enable = 'on';
+handles.crackerBool.Enable = 'on';
+handles.modularBool.Enable = 'on';
+handles.alphaChoice.Enable = 'on';
+handles.timeout.Enable = 'on';
+handles.iterText.Enable = 'on';
+
 
 handles.avgT.String = [num2str(stats.avgT), ' sec'];
 handles.avgC.String = num2str(stats.avgC);
@@ -444,8 +487,29 @@ handles.iterText.String = '20';
 handles.iterSlide.Value = 20;
 handles.commonBool.Value = 0;
 
+
+handles.commonBool.Enable = 'off';
+handles.dictBool.Enable = 'off';
+handles.modDictBool.Enable = 'off';
+handles.lfdBool.Enable = 'off';
+handles.crackerBool.Enable = 'off';
+handles.modularBool.Enable = 'off';
+handles.alphaChoice.Enable = 'off';
+handles.timeout.Enable = 'off';
+handles.iterText.Enable = 'off';
+
 pause(0.0001);
 stats = passTester('abcd', 20, 1, 1, handles);
+
+handles.commonBool.Enable = 'on';
+handles.dictBool.Enable = 'on';
+handles.modDictBool.Enable = 'on';
+handles.lfdBool.Enable = 'on';
+handles.crackerBool.Enable = 'on';
+handles.modularBool.Enable = 'on';
+handles.alphaChoice.Enable = 'on';
+handles.timeout.Enable = 'on';
+handles.iterText.Enable = 'on';
 
 handles.avgT.String = [num2str(stats.avgT), ' sec'];
 handles.avgC.String = num2str(stats.avgC);
@@ -673,3 +737,31 @@ function crackerBool_Callback(hObject, eventdata, handles)
 handles.commonBool.Value = 0;
 handles.dictBool.Value = 0;
 handles.modDictBool.Value = 0;
+
+handles.commonBool.Enable = 'off';
+handles.dictBool.Enable = 'off';
+handles.modDictBool.Enable = 'off';
+
+
+% --- Executes on button press in lfdBool.
+function lfdBool_Callback(hObject, eventdata, handles)
+% hObject    handle to lfdBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of lfdBool
+handles.commonBool.Enable = 'on';
+handles.dictBool.Enable = 'on';
+handles.modDictBool.Enable = 'on';
+
+
+% --- Executes on button press in modularBool.
+function modularBool_Callback(hObject, eventdata, handles)
+% hObject    handle to modularBool (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of modularBool
+handles.commonBool.Enable = 'on';
+handles.dictBool.Enable = 'on';
+handles.modDictBool.Enable = 'on';
