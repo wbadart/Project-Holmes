@@ -22,7 +22,7 @@ function varargout = combineTool(varargin)
 
 % Edit the above text to modify the response to help combineTool
 
-% Last Modified by GUIDE v2.5 19-Apr-2015 02:07:04
+% Last Modified by GUIDE v2.5 20-Apr-2015 16:34:22
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -164,7 +164,72 @@ function mergeButton_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 if ((~isempty(handles.outputName.String)) && (~isempty(handles.baseName.String)) && (~isempty(handles.additionName.String)))
+%     handles.baseName.Enable = 'off';
+%     handles.browseBase.Enable = 'off';
+%     handles.additionName.Enable = 'off';
+%     handles.browseAdd.Enable = 'off';
+%     handles.outputName.Enable = 'off';
+%     handles.mergeButton.Enable = 'off';
+%     handles.iterText.Enable = 'off';
+%     handles.iterSlide.Enable = 'off';
+    
     dictCombine(handles.baseName.String, handles.additionName.String, handles.outputName.String, handles);
+    
+%     handles.baseName.Enable = 'on';
+%     handles.browseBase.Enable = 'on';
+%     handles.additionName.Enable = 'on';
+%     handles.browseAdd.Enable = 'on';
+%     handles.outputName.Enable = 'on';
+%     handles.mergeButton.Enable = 'on';
+%     handles.iterText.Enable = 'on';
+%     handles.iterSlide.Enable = 'on';
 end
 
 
+% --- Executes on slider movement.
+function iterSlide_Callback(hObject, eventdata, handles)
+% hObject    handle to iterSlide (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+handles.iterText.String = num2str(round(handles.iterSlide.Value));
+handles.iterSlide.Value = round(handles.iterSlide.Value);
+
+% --- Executes during object creation, after setting all properties.
+function iterSlide_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to iterSlide (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+
+function iterText_Callback(hObject, eventdata, handles)
+% hObject    handle to iterText (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of iterText as text
+%        str2double(get(hObject,'String')) returns contents of iterText as a double
+a = str2double(handles.iterText.String);
+if ((a >= handles.iterSlide.Min) && (a <= handles.iterSlide.Max))
+    handles.iterSlide.Value = a;
+end
+
+% --- Executes during object creation, after setting all properties.
+function iterText_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to iterText (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
