@@ -29,4 +29,5 @@ for p = 1:length(message)
     dataCells{3, p} = alphCommon(dataCells{2, p});
 end
 
-disp(char(dataCells{3, 1:end})');
+decodedM = char(dataCells{3, 1:end})';
+disp(decodedM);
