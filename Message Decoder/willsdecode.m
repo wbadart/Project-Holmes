@@ -1,8 +1,5 @@
-clear
-clc
-
-
-message = 'hellohappy';
+message = messageProc(input('input message: ', 's'));
+message = messageProc(message);
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz';
 letterFreq = zeros(1, length(alphabet));
@@ -14,7 +11,6 @@ for i = 1:length(message)
     letterFreq(currentLetter) = letterFreq(currentLetter) + 1;
     
 end
-
 
 for j = 1:length(alphabet)
     [m, a] = max(letterFreq);
