@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 18-Apr-2015 18:28:49
+% Last Modified by GUIDE v2.5 21-Apr-2015 17:21:26
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
