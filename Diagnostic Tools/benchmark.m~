@@ -22,7 +22,7 @@ function varargout = benchmark(varargin)
 
 % Edit the above text to modify the response to help benchmark
 
-% Last Modified by GUIDE v2.5 21-Apr-2015 18:29:43
+% Last Modified by GUIDE v2.5 21-Apr-2015 17:21:26
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -286,6 +286,9 @@ uicontrol(handles.inputpass);
 handles.inputpass.String = '';
 handles.inputpass.ForegroundColor = [0 0 0];
 
+len = length(handles.inputpass.String);
+for i = 1:len
+    hand
 
 function inputpass_Callback(hObject, eventdata, handles)
 % hObject    handle to inputpass (see GCBO)
@@ -768,28 +771,3 @@ function modularBool_Callback(hObject, eventdata, handles)
 handles.commonBool.Enable = 'on';
 handles.dictBool.Enable = 'on';
 handles.modDictBool.Enable = 'on';
-
-
-% --- Executes on key press with focus on inputpass and none of its controls.
-function inputpass_KeyPressFcn(hObject, eventdata, handles)
-% hObject    handle to inputpass (see GCBO)
-% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)
-%	Key: name of the key that was pressed, in lower case
-%	Character: character interpretation of the key(s) that was pressed
-%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
-% handles    structure with handles and user data (see GUIDATA)
-
-%len = length(handles.inputpass.String);
-%for i = 1:len
-%    hiddenPass(i) = '*';
-%end
-%handles.inputpass.String = hiddenPass;
-
-% Convert to Asterisks
-SizePass=size(handles.inputpass.String);
-if SizePass(2)>0;
-    asterisk(1, 1:SizePass(2))='*';
-    handles.inputpass.String=asterisk;
-else
-    handles.inputpass.String=' ';
-end
