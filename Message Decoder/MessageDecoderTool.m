@@ -22,7 +22,7 @@ function varargout = MessageDecoderTool(varargin)
 
 % Edit the above text to modify the response to help MessageDecoderTool
 
-% Last Modified by GUIDE v2.5 21-Apr-2015 18:10:27
+% Last Modified by GUIDE v2.5 21-Apr-2015 18:45:44
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;

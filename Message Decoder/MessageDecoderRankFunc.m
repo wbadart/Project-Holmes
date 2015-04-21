@@ -4,13 +4,6 @@
 
 
 function MessageDecoderRankFunc(handles)
-%% Upload Image
-
-% fileName = handles.BrowseText.String;
-% 
-% Mimage = imread(fileName);
-
-
 %% Stores Message
 
 message = handles.EncryptedText.String;
@@ -196,7 +189,7 @@ for u = 1:messageLength
 end
 
 %% Display possible letters
-
+%Static = decrypted letter edit = encrypted
 handles.AEdit.String = alphabetF{1,3};
 handles.BEdit.String = alphabetF{1,19};
 handles.CEdit.String = alphabetF{1,12};
