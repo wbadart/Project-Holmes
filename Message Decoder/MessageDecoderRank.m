@@ -93,20 +93,35 @@ for u = 1:messageLength - spaceNum
     letterFreq = 0;
     letter = 0;
 end
-%% Sort
 
+%% Sort
 %restrict number of characters so that letters will only have one frequency
 %Tl;dr Removing repeat characters
-for u = 1:messageLength
-    for v = u:messageLength-u
-        if message(u) == message(v+1)
+    for u = 1:messageLength
+        
+        if u < messageLength/2
             
-            alphabetF{1, v+1} = ' ';
-            alphabetF{2, v+1} = -1;
+            messageLength2 = messageLength - u;
+        
+        elseif u >= messageLength/2 
+            
+            messageLength2 = messageLength - 1;
             
         end
+            
+        for v = u:(messageLength2)
+            if strcmp(alphabetF{1, u}, alphabetF{1, v + 1})
+                
+                alphabetF{1, v+1} = ' ';
+                alphabetF{2, v+1} = -1;
+               
+            end
+            
+        end
+       
     end
-end
+
+
 
 %Sorts the frequencys in alphabetF largest to smallest (second row of cell
 while ~sorted
