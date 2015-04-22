@@ -26,7 +26,7 @@ letterRankArray = ['e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', ...
     'c', 'u', 'm', 'w', 'f', 'g', 'y', 'b', 'p', 'v', 'k', 'j', 'x', ...
     'q', 'z'];
 
-
+%Array of punctuation
 punctuationArray = ['.', '"', ' ,', '?', ':', '@', '#', '$', '%', '^', ...
     '&', '-', '_', ' ', ';', '!'];
 
@@ -34,15 +34,16 @@ letter = 0; %initializes number of time a character appears
 
 letterFreq = 0; %initializes letter frequency
 
-letterFreqArray = zeros(1, messageLength);
+letterFreqArray = zeros(1, messageLength); %intitializes vector to store frequencies...
+%of the characters
 
-sorted = false;
+sorted = false; %stopper for while loop
 
-spaceNum = 0;
+spaceNum = 0; %number of spaces and punctuation in messsage initially
 
 messageDecrypted = blanks(messageLength); %creates an empty string of message length
 
-noRepeats = false;
+messageLength2 = messageLength;%used for iterator in the removal of repeat characters
 %% Frequency
 %removes spaces & punctuation
 for k = 1:messageLength
@@ -52,7 +53,6 @@ for k = 1:messageLength
             alphabetF{2,k} = -1;
             spaceNum = spaceNum + 1;
         end
-        
         
     end
 end
@@ -72,7 +72,6 @@ for u = 1:messageLength - spaceNum
         if strcmp(message(u),message(v+1))
             
             letter = letter + 1;
-        else
         end
         
     end
@@ -91,16 +90,28 @@ end
 %% Sort
 %restrict number of characters so that letters will only have one frequency
 %Tl;dr Removing repeat characters
-    
     for u = 1:messageLength
-        for v = u:messageLength - u
-            if strcmp(message(u),message(v + 1))
+        
+        if u < messageLength/2
+            
+            messageLength2 = messageLength - u;
+        
+        elseif u >= messageLength/2 
+            
+            messageLength2 = messageLength - 1;
+            
+        end
+            
+        for v = u:(messageLength2)
+            if strcmp(alphabetF{1, u}, alphabetF{1, v + 1})
                 
                 alphabetF{1, v+1} = ' ';
                 alphabetF{2, v+1} = -1;
-                
+               
             end
+            
         end
+       
     end
 
 
