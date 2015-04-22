@@ -139,7 +139,10 @@ function passLen_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of passLen as text
 %        str2double(get(hObject,'String')) returns contents of passLen as a double
-
+a = str2double(handles.passLen.String);
+if ((a >= handles.lenSlide.Min) && (a <= handles.lenSlide.Max))
+    handles.lenSlide.Value = a;
+end
 
 % --- Executes during object creation, after setting all properties.
 function passLen_CreateFcn(hObject, eventdata, handles)
@@ -152,10 +155,7 @@ function passLen_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-a = str2double(handles.passLen.String);
-if ((a >= handles.lenSlide.Min) && (a <= handles.lenSlide.Max))
-    handles.lenSlide.Value = a;
-end
+
 
 
 % --- Executes on button press in cpyBtn.
