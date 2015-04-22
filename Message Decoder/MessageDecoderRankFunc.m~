@@ -94,11 +94,10 @@ end
     
     for u = 1:messageLength
         for v = u:messageLength - u
-            if strcmp(message(u),message(v + 1))
+            if strcmp(message(u),message(v))
                 
                 alphabetF{1, v+1} = ' ';
-                alphabetF{2, v+1} = -1;
-                
+                alphabetF{2, v+1} = -1;;
             end
         end
     end
