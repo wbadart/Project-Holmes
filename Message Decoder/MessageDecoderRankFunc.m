@@ -54,6 +54,7 @@ for k = 1:messageLength
             spaceNum = spaceNum + 1;
         end
         
+        
     end
 end
 
@@ -72,6 +73,7 @@ for u = 1:messageLength - spaceNum
         if strcmp(message(u),message(v+1))
             
             letter = letter + 1;
+        else
         end
         
     end
@@ -87,6 +89,7 @@ for u = 1:messageLength - spaceNum
     letterFreq = 0;
     letter = 0;
 end
+
 %% Sort
 %restrict number of characters so that letters will only have one frequency
 %Tl;dr Removing repeat characters
@@ -116,7 +119,7 @@ end
 
 
 
-%Sorts the frequencys in alphabetF largest to smallest (second row of cell
+%Sorts the frequencys in alphabetF largest to smallest (second row of cell)
 while ~sorted
     
     y = 5;

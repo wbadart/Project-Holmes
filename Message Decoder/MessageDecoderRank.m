@@ -1,4 +1,4 @@
-%% MessageDecoderRankFunc.m
+%% MessageDecoderRank.m
 % Decrypts a coded message uploaded into MATLAB using the ranking of
 % frequency. 
 
