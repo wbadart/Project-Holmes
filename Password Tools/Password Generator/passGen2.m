@@ -25,7 +25,7 @@ function varargout = passGen2(varargin)
 % Author:       Will Badart
 % Last Edited:  See git for version control.
 
-% Last Modified by GUIDE v2.5 28-Feb-2015 17:17:14
+% Last Modified by GUIDE v2.5 22-Apr-2015 18:53:59
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -152,27 +152,10 @@ function passLen_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
-
-% --- Executes on button press in increase.
-function increase_Callback(hObject, eventdata, handles)
-% hObject    handle to increase (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-passLenNum = str2double(handles.passLen.String);
-passLenNum = passLenNum + 1;
-handles.passLen.String = num2str(passLenNum);
-
-% --- Executes on button press in decrease.
-function decrease_Callback(hObject, eventdata, handles)
-% hObject    handle to decrease (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-passLenNum = str2double(handles.passLen.String);
-if passLenNum > 1
-    passLenNum = passLenNum - 1;
+a = str2double(handles.passLen.String);
+if ((a >= handles.lenSlide.Min) && (a <= handles.lenSlide.Max))
+    handles.lenSlide.Value = a;
 end
-handles.passLen.String = num2str(passLenNum);
 
 
 % --- Executes on button press in cpyBtn.
@@ -190,3 +173,27 @@ function clrBtn_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 handles.generatedPassword.String = 'password';
 handles.generatedPassword.ForegroundColor = [0.831 0.816 0.784];
+
+
+% --- Executes on slider movement.
+function lenSlide_Callback(hObject, eventdata, handles)
+% hObject    handle to lenSlide (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+a = num2str(handles.lenSlide.Value);
+handles.passLen.String = a;
+
+% --- Executes during object creation, after setting all properties.
+function lenSlide_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to lenSlide (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+

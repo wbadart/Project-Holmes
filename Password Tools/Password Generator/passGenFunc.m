@@ -12,7 +12,7 @@ complexity = handles.complexSlide.Value;
 chars.lowers = 'abcdefghijklmnopqrstuvwxyz';
 chars.uppers = upper(chars.lowers);
 chars.nums = '1234567890';
-chars.spec = '!@#$%^&*()-_=+[{]}\|;:''",<.>/?';
+chars.spec = '!@#$%^&*?';
 passLength = str2double(handles.passLen.String);
 
 %% Determine Complexity Level
