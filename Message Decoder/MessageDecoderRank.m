@@ -3,14 +3,6 @@
 % frequency. 
 
 
-% function MessageDecoderRankFunc(handles)
-%% Upload Image
-
-% fileName = handles.BrowseText.String;
-% 
-% Mimage = imread(fileName);
-
-
 %% Stores Message
 
 message = input('enter message:', 's');
