@@ -22,7 +22,7 @@ function varargout = MessageDecoderTool(varargin)
 
 % Edit the above text to modify the response to help MessageDecoderTool
 
-% Last Modified by GUIDE v2.5 21-Apr-2015 18:45:44
+% Last Modified by GUIDE v2.5 22-Apr-2015 13:55:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -701,3 +701,16 @@ function DecodeButton_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 MessageDecoderRankFunc(handles);
 handles.DecryptedMessage.Enable = 'on';
+
+
+% --- If Enable == 'on', executes on mouse press in 5 pixel border.
+% --- Otherwise, executes on mouse press in 5 pixel border or over EncryptedText.
+function EncryptedText_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to EncryptedText (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% Toggel the "Enable" state to ON
+set(hObject, 'Enable', 'On');
+% Create UI control
+uicontrol(handles.EncryptedText);
+handles.EncryptedText.String = '';
