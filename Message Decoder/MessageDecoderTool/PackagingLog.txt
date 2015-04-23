@@ -1,0 +1,22 @@
+ant:
+<ant>
+  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_redistribution" />
+  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_testing" />
+  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_redistribution_files_only" />
+</ant>
+mcc -C -o MessageDecoderTool -W WinMain:MessageDecoderTool -T link:exe -d 'C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_testing' -v 'C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool.m' 
+Compiler version: 5.2 (R2014b)
+Dependency analysis by REQUIREMENTS.
+[Warning: Adding path "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project
+Holmes\Message Decoder" to Compiler path instance.] 
+Parsing file "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool.m"
+	(Referenced from: "Compiler Command Line").
+Deleting 0 temporary MEX authorization files.
+Generating file "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_testing\readme.txt".
+Packaging...
+Adding custom icon C:\Program Files\MATLAB\R2014b\toolbox\compiler\Resources\default_icon.ico to C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_testing\MessageDecoderTool.exe.
+Attempting to embed the CTF archive into the application C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_testing\MessageDecoderTool.exe.
+Finished embedding CTF archive. Deleting the external CTF archive.
+Creating the bundle...
+Web based installer created at C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Message Decoder\MessageDecoderTool\for_redistribution\installer_decode.exe.
+Packaging complete.

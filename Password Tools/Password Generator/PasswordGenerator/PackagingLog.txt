@@ -1,22 +1,22 @@
 ant:
 <ant>
-  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_redistribution" />
-  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_testing" />
-  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_redistribution_files_only" />
+  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_redistribution" />
+  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_testing" />
+  <mkdir dir="C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_redistribution_files_only" />
 </ant>
-mcc -C -o PasswordGenerator -W WinMain:PasswordGenerator -T link:exe -d 'C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_testing' -v 'C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\passGen2.m' 
+mcc -C -o PasswordGenerator -W WinMain:PasswordGenerator -T link:exe -d 'C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_testing' -v 'C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\passGen2.m' 
 Compiler version: 5.2 (R2014b)
 Dependency analysis by REQUIREMENTS.
 [Warning: Adding path "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project
-Holmes\Password Generator" to Compiler path instance.] 
-Parsing file "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\passGen2.m"
+Holmes\Password Tools\Password Generator" to Compiler path instance.] 
+Parsing file "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\passGen2.m"
 	(Referenced from: "Compiler Command Line").
 Deleting 0 temporary MEX authorization files.
-Generating file "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_testing\readme.txt".
+Generating file "C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_testing\readme.txt".
 Packaging...
-Adding custom icon C:\Program Files\MATLAB\R2014b\toolbox\compiler\Resources\default_icon.ico to C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_testing\PasswordGenerator.exe.
-Attempting to embed the CTF archive into the application C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_testing\PasswordGenerator.exe.
+Adding custom icon C:\Program Files\MATLAB\R2014b\toolbox\compiler\Resources\default_icon.ico to C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_testing\PasswordGenerator.exe.
+Attempting to embed the CTF archive into the application C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_testing\PasswordGenerator.exe.
 Finished embedding CTF archive. Deleting the external CTF archive.
 Creating the bundle...
-Web based installer created at C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Generator\PasswordGenerator\for_redistribution\MyAppInstaller_web.exe.
+Web based installer created at C:\Users\Will\SkyDrive\Documents\EG files\MATLAB\Project Holmes\Password Tools\Password Generator\PasswordGenerator\for_redistribution\installer_passGen.exe.
 Packaging complete.
