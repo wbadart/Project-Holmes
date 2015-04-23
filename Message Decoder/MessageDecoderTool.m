@@ -127,7 +127,7 @@ function TEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of TEdit as text
 %        str2double(get(hObject,'String')) returns contents of TEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function TEdit_CreateFcn(hObject, eventdata, handles)
@@ -150,7 +150,7 @@ function UEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of UEdit as text
 %        str2double(get(hObject,'String')) returns contents of UEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function UEdit_CreateFcn(hObject, eventdata, handles)
@@ -173,7 +173,7 @@ function VEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of VEdit as text
 %        str2double(get(hObject,'String')) returns contents of VEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function VEdit_CreateFcn(hObject, eventdata, handles)
@@ -196,13 +196,14 @@ function WEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of WEdit as text
 %        str2double(get(hObject,'String')) returns contents of WEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function WEdit_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to WEdit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
+
 
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
@@ -219,7 +220,7 @@ function XEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of XEdit as text
 %        str2double(get(hObject,'String')) returns contents of XEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function XEdit_CreateFcn(hObject, eventdata, handles)
@@ -242,7 +243,7 @@ function YEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of YEdit as text
 %        str2double(get(hObject,'String')) returns contents of YEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function YEdit_CreateFcn(hObject, eventdata, handles)
@@ -265,7 +266,7 @@ function ZEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of ZEdit as text
 %        str2double(get(hObject,'String')) returns contents of ZEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function ZEdit_CreateFcn(hObject, eventdata, handles)
@@ -288,7 +289,7 @@ function NEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of NEdit as text
 %        str2double(get(hObject,'String')) returns contents of NEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function NEdit_CreateFcn(hObject, eventdata, handles)
@@ -311,7 +312,7 @@ function PEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of PEdit as text
 %        str2double(get(hObject,'String')) returns contents of PEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function PEdit_CreateFcn(hObject, eventdata, handles)
@@ -334,7 +335,7 @@ function QEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of QEdit as text
 %        str2double(get(hObject,'String')) returns contents of QEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function QEdit_CreateFcn(hObject, eventdata, handles)
@@ -357,7 +358,7 @@ function REdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of REdit as text
 %        str2double(get(hObject,'String')) returns contents of REdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function REdit_CreateFcn(hObject, eventdata, handles)
@@ -380,7 +381,7 @@ function OEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of OEdit as text
 %        str2double(get(hObject,'String')) returns contents of OEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function OEdit_CreateFcn(hObject, eventdata, handles)
@@ -403,7 +404,7 @@ function LEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of LEdit as text
 %        str2double(get(hObject,'String')) returns contents of LEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function LEdit_CreateFcn(hObject, eventdata, handles)
@@ -426,7 +427,7 @@ function MEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of MEdit as text
 %        str2double(get(hObject,'String')) returns contents of MEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function MEdit_CreateFcn(hObject, eventdata, handles)
@@ -449,7 +450,7 @@ function KEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of KEdit as text
 %        str2double(get(hObject,'String')) returns contents of KEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function KEdit_CreateFcn(hObject, eventdata, handles)
@@ -472,7 +473,7 @@ function JEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of JEdit as text
 %        str2double(get(hObject,'String')) returns contents of JEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function JEdit_CreateFcn(hObject, eventdata, handles)
@@ -495,7 +496,7 @@ function IEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of IEdit as text
 %        str2double(get(hObject,'String')) returns contents of IEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function IEdit_CreateFcn(hObject, eventdata, handles)
@@ -518,7 +519,7 @@ function HEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of HEdit as text
 %        str2double(get(hObject,'String')) returns contents of HEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function HEdit_CreateFcn(hObject, eventdata, handles)
@@ -541,7 +542,7 @@ function CEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of CEdit as text
 %        str2double(get(hObject,'String')) returns contents of CEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function CEdit_CreateFcn(hObject, eventdata, handles)
@@ -564,7 +565,7 @@ function EEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of EEdit as text
 %        str2double(get(hObject,'String')) returns contents of EEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function EEdit_CreateFcn(hObject, eventdata, handles)
@@ -587,7 +588,7 @@ function FEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of FEdit as text
 %        str2double(get(hObject,'String')) returns contents of FEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function FEdit_CreateFcn(hObject, eventdata, handles)
@@ -610,7 +611,7 @@ function GEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of GEdit as text
 %        str2double(get(hObject,'String')) returns contents of GEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function GEdit_CreateFcn(hObject, eventdata, handles)
@@ -633,7 +634,7 @@ function DEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of DEdit as text
 %        str2double(get(hObject,'String')) returns contents of DEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function DEdit_CreateFcn(hObject, eventdata, handles)
@@ -656,7 +657,7 @@ function BEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of BEdit as text
 %        str2double(get(hObject,'String')) returns contents of BEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function BEdit_CreateFcn(hObject, eventdata, handles)
@@ -679,7 +680,7 @@ function AEdit_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of AEdit as text
 %        str2double(get(hObject,'String')) returns contents of AEdit as a double
-
+MessageDecoderRankFunc(handles, true);
 
 % --- Executes during object creation, after setting all properties.
 function AEdit_CreateFcn(hObject, eventdata, handles)
@@ -699,7 +700,7 @@ function DecodeButton_Callback(hObject, eventdata, handles)
 % hObject    handle to DecodeButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-MessageDecoderRankFunc(handles);
+MessageDecoderRankFunc(handles, false);
 handles.DecryptedMessage.Enable = 'on';
 
 
