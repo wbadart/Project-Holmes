@@ -35,7 +35,7 @@ if genBool
     alphCommonI(25) = handles.YEdit.String;
     alphCommonI(26) = handles.ZEdit.String;
 end
-alphCommon = 'etaoinshrdlcumwfgybpvkjxqz';
+alphCommon = 'etaoinshrdlcumwfgypbvkjxqz';
 
 
 punctuationArray = ['(', ')', '.', '"', ' ,', '?', ':', '@', '#', '$', '%', '^', ...

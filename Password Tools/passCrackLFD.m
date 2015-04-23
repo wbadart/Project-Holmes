@@ -29,7 +29,7 @@ if handles.commonBool.Value
     for i = 1:length(common)
         guess = common(i);
         counter = counter + 1;
-        if strcmp(guess, realpass) == 1
+        if (strcmp(guess, realpass) || toc >= timeout)
             guess = guess{:};
             found = true;
             results.found = 'common password attack.';
@@ -45,7 +45,7 @@ if ((handles.dictBool.Value) && (~strcmp(guess, realpass)))
     for i = 1:length(dictionary)
         guess = dictionary(i);
         counter = counter + 1;
-        if strcmp(guess, realpass) == 1
+        if (strcmp(guess, realpass) || toc >= timeout)
             guess = guess{:};
             found = true;
             results.found = 'dictionary attack.';
@@ -63,17 +63,17 @@ if ((handles.modDictBool.Value) && ~strcmp(guess, realpass))
             for k = 1:length(nums)
                 guess = cell2mat([dictionary(i), nums(j), nums(k)]);
                 counter = counter + 1;
-                if strcmp(guess, realpass)
+                if (strcmp(guess, realpass) || toc >= timeout)
                     found = true;
                     results.found = 'modified dictionary attack.';
                     break
                 end
             end
-            if strcmp(guess, realpass)
+            if (strcmp(guess, realpass) || toc >= timeout)
                 break
             end
         end
-        if strcmp(guess, realpass)
+        if (strcmp(guess, realpass) || toc >=timeout)
             break
         end
     end
