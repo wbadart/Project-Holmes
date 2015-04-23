@@ -38,12 +38,12 @@ end
 alphCommon = 'etaoinshrdlcumwfgybpvkjxqz';
 
 
-punctuationArray = ['.', '"', ' ,', '?', ':', '@', '#', '$', '%', '^', ...
+punctuationArray = ['(', ')', '.', '"', ' ,', '?', ':', '@', '#', '$', '%', '^', ...
     '&', '-', '_', ' ', ';', '!', ''''];
 
 % put the message in the first row of dataCelss
 for i = 1:length(message)
-    dataCells{1, i} = message(i);
+    dataCells{1, i} = lower(message(i));
     currentLetter = strfind(alphabet, message(i));
     letterFreq(currentLetter) = letterFreq(currentLetter) + 1;
 end

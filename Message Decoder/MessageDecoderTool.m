@@ -22,7 +22,7 @@ function varargout = MessageDecoderTool(varargin)
 
 % Edit the above text to modify the response to help MessageDecoderTool
 
-% Last Modified by GUIDE v2.5 22-Apr-2015 13:55:57
+% Last Modified by GUIDE v2.5 23-Apr-2015 01:04:57
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -715,3 +715,14 @@ set(hObject, 'Enable', 'On');
 % Create UI control
 uicontrol(handles.EncryptedText);
 handles.EncryptedText.String = '';
+
+
+
+function SEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to SEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of SEdit as text
+%        str2double(get(hObject,'String')) returns contents of SEdit as a double
+MessageDecoderRankFunc(handles, true);
