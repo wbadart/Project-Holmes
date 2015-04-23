@@ -22,7 +22,7 @@ function varargout = MessageDecoderTool(varargin)
 
 % Edit the above text to modify the response to help MessageDecoderTool
 
-% Last Modified by GUIDE v2.5 23-Apr-2015 01:04:57
+% Last Modified by GUIDE v2.5 23-Apr-2015 01:25:53
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -726,3 +726,21 @@ function SEdit_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of SEdit as text
 %        str2double(get(hObject,'String')) returns contents of SEdit as a double
 MessageDecoderRankFunc(handles, true);
+
+
+% --- Executes on button press in browsebttn.
+function browsebttn_Callback(hObject, eventdata, handles)
+% hObject    handle to browsebttn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+[FileName,PathName] = uigetfile('*.txt','Select encrypted text file');
+filename = [PathName, FileName];
+delimiter = '';
+formatSpec = '%s%[^\n\r]';
+fileID = fopen(filename,'r');
+dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'EmptyValue' ,NaN, 'ReturnOnError', false);
+fclose(fileID);
+cryptText = char(dataArray{:, 1});
+clearvars filename delimiter formatSpec fileID dataArray ans;
+handles.EncryptedText.String = cryptText;
+handles.EncryptedText.Enable = 'on';
